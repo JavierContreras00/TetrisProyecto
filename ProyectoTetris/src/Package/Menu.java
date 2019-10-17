@@ -81,13 +81,22 @@ public class Menu extends JFrame {
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-			/*char[] clave = jpassclave.getPassword();
-				//String claveFinal = new String (clave);
+			char[] clave = jpassclave.getPassword();
+				String claveFinal = new String (clave);
 				
 				if(txtusuario.getText().equals("Javier") && claveFinal.equals("123") ) { 
 			dispose();
-			JOptionPane*/
-				}
+			JOptionPane.showMessageDialog(null, "Disfruta de la partida","Ingresaste",JOptionPane.INFORMATION_MESSAGE);
+      Menu p = new Menu();
+      p.setVisible(true);
+				}else {
+      JOptionPane.showMessageDialog ( null, "Usuario o contrasena incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+      txtusuario.setText(" ");
+      jpassclave.setText(" ");
+      txtusuario.requestFocus();
+      
+      
+				}}
 		});
 		btnIngresar.setBounds(288, 72, 97, 25);
 		contentPane.add(btnIngresar);
