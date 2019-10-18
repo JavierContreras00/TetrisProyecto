@@ -29,7 +29,6 @@ public class LogIn extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * f
 	 */
 	public LogIn() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
