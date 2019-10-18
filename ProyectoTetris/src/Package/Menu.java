@@ -69,12 +69,12 @@ public class Menu extends JFrame {
 		contentPane.add(lblContrasena);
 		
 		txtusuario = new JTextField();
-		txtusuario.setBounds(142, 73, 116, 22);
+		txtusuario.setBounds(139, 76, 116, 16);
 		contentPane.add(txtusuario);
 		txtusuario.setColumns(10);
 		
 		jpassclave = new JPasswordField();
-		jpassclave.setBounds(146, 114, 112, 20);
+		jpassclave.setBounds(139, 115, 116, 18);
 		contentPane.add(jpassclave);
 		
 		btnIngresar = new JButton("Ingresar");
