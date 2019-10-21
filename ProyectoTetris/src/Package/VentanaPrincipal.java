@@ -137,7 +137,7 @@ public class VentanaPrincipal extends JFrame {
 		lblTetrisdeusto.setBounds(100, 36, 85, 13);
 
 		absPane.add(lblTetrisdeusto);
-
+//e
 	}
 
 }
