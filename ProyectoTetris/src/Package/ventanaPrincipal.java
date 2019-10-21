@@ -64,9 +64,17 @@ public class ventanaPrincipal extends JFrame {
 		JButton btnExit = new JButton("Exit");
 		btnExit.setBounds(100, 165, 85, 21);
 		absPane.add(btnExit);
+		btnExit.addActionListener(new ActionListener() {
+		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);	
+			}
+		}
+				);
 		
 		JLabel lblTetrisdeusto = new JLabel("TetrisDeusto");
-		lblTetrisdeusto.setBounds(100, 36, 85, 13);
+		lblTetrisdeusto.setBounds(114, 35, 58, 13);
 		absPane.add(lblTetrisdeusto);
 	}
 }
