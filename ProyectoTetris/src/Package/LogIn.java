@@ -55,7 +55,10 @@ public class LogIn extends JFrame {
 	/**
 
 	 * Create the frame.
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/contre00/TetrisProyecto.git
 	 */
 
 	public LogIn() {
@@ -129,7 +132,8 @@ public class LogIn extends JFrame {
       txtusuario.requestFocus();
 
       
- //esto
+ 
+      
       
 
 				}}
