@@ -132,7 +132,7 @@ public class LogIn extends JFrame {
       txtusuario.requestFocus();
 
       
- 
+ //prueba
       
       
 
