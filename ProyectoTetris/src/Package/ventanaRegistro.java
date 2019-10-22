@@ -16,6 +16,13 @@ import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPasswordField;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import javax.swing.JToggleButton;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.ButtonGroup;
 
 public class ventanaRegistro extends JFrame {
 
@@ -23,10 +30,12 @@ public class ventanaRegistro extends JFrame {
 	private JTextField textNombre;
 	private JTextField textCorreo;
 	private JPasswordField passwordContrasenya;
+	private JTextField textContrasenya;
 
 	/**
 	 * Launch the application.
 	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -43,6 +52,10 @@ public class ventanaRegistro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	public boolean mostrar = true; 
+	public static ButtonGroup Sexo = new ButtonGroup();
+	
 	public ventanaRegistro() {
 		setTitle("Registrarse");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,36 +66,33 @@ public class ventanaRegistro extends JFrame {
 		contentPane.setLayout(null);
 		
 		
-		
-		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(25, 23, 46, 13);
+		lblNombre.setBounds(10, 23, 59, 13);
 		contentPane.add(lblNombre);
 		
 		JLabel lblContraseanya = new JLabel("Contrase\u00F1a:");
-		lblContraseanya.setBounds(25, 63, 59, 13);
+		lblContraseanya.setBounds(10, 63, 69, 13);
 		contentPane.add(lblContraseanya);
 		
 		JLabel lblCorreo = new JLabel("Correo:");
-		lblCorreo.setBounds(25, 103, 46, 13);
+		lblCorreo.setBounds(10, 103, 46, 13);
 		contentPane.add(lblCorreo);
 		
 		JLabel lblSexo = new JLabel("Sexo:");
-		lblSexo.setBounds(25, 143, 46, 13);
+		lblSexo.setBounds(10, 143, 46, 13);
 		contentPane.add(lblSexo);
 		
 		JLabel lblEdad = new JLabel("Edad:");
-		lblEdad.setBounds(25, 183, 46, 13);
+		lblEdad.setBounds(10, 183, 46, 13);
 		contentPane.add(lblEdad);
 		
 		JButton btnResgistrarse = new JButton("Resgistrarse");
-		btnResgistrarse.setBounds(116, 232, 99, 21);
+		btnResgistrarse.setBounds(91, 232, 124, 21);
 		contentPane.add(btnResgistrarse);
 		
 		JButton btnSalir = new JButton("Salir");
-		btnSalir.setBounds(225, 232, 99, 21);
+		btnSalir.setBounds(225, 232, 125, 21);
 		contentPane.add(btnSalir);
-		
 		btnSalir.addActionListener(new ActionListener() {
 			
 			@Override
@@ -93,38 +103,77 @@ public class ventanaRegistro extends JFrame {
 				);
 		
 		textNombre = new JTextField();
-		textNombre.setBounds(91, 20, 311, 19);
+		textNombre.setBounds(89, 20, 311, 19);
 		contentPane.add(textNombre);
 		textNombre.setColumns(10);
 		
 		JCheckBox chckbxMostrar = new JCheckBox("Mostrar");
-		chckbxMostrar.setBounds(335, 59, 95, 21);
+		chckbxMostrar.setBounds(341, 59, 95, 21);
 		contentPane.add(chckbxMostrar);
+		chckbxMostrar.setVisible(true);
+		chckbxMostrar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if (mostrar) {
+					textContrasenya.setVisible(true);
+					passwordContrasenya.setVisible(false);
+					textContrasenya.setText(passwordContrasenya.getText());
+					mostrar = false; 
+				} else {
+					textContrasenya.setVisible(false);
+					passwordContrasenya.setVisible(true);
+					textContrasenya.setText(textContrasenya.getText());
+					mostrar = true; 
+					
+				}
+				
+			}
+		});
 		
 		textCorreo = new JTextField();
-		textCorreo.setBounds(91, 100, 311, 19);
+		textCorreo.setBounds(89, 100, 311, 19);
 		contentPane.add(textCorreo);
 		textCorreo.setColumns(10);
 		
-		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
-		rdbtnMasculino.setBounds(91, 139, 83, 21);
-		contentPane.add(rdbtnMasculino);
-		
-		JRadioButton rdbtnFemenino = new JRadioButton("Femenino");
-		rdbtnFemenino.setBounds(182, 139, 83, 21);
-		contentPane.add(rdbtnFemenino);
-		
-		JRadioButton rdbtnOtro = new JRadioButton("Otro");
-		rdbtnOtro.setBounds(267, 139, 83, 21);
-		contentPane.add(rdbtnOtro);
-		
 		JComboBox comboBoxEdad = new JComboBox();
 		comboBoxEdad.setModel(new DefaultComboBoxModel(new String[] {"3-12", "12-18", "18-32", ">32"}));
-		comboBoxEdad.setBounds(91, 179, 59, 21);
+		comboBoxEdad.setBounds(89, 179, 59, 21);
 		contentPane.add(comboBoxEdad);
 		
 		passwordContrasenya = new JPasswordField();
-		passwordContrasenya.setBounds(94, 60, 230, 19);
+		passwordContrasenya.setBounds(89, 60, 235, 19);
 		contentPane.add(passwordContrasenya);
+		
+		textContrasenya = new JTextField();
+		textContrasenya.setBounds(89, 60, 235, 19);
+		contentPane.add(textContrasenya);
+		textContrasenya.setColumns(10);
+		
+		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
+		Sexo.add(rdbtnMasculino);
+		rdbtnMasculino.setBounds(91, 139, 91, 21);
+		contentPane.add(rdbtnMasculino);
+		
+		JRadioButton rdbtnFemenino = new JRadioButton("Femenino");
+		Sexo.add(rdbtnFemenino);
+		rdbtnFemenino.setBounds(184, 139, 93, 21);
+		contentPane.add(rdbtnFemenino);
+		
+		JRadioButton rdbtnOtro = new JRadioButton("Otro");
+		Sexo.add(rdbtnOtro);
+		rdbtnOtro.setBounds(279, 139, 71, 21);
+		contentPane.add(rdbtnOtro);
+		
+	  
+	}
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "SwingAction");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
 	}
 }

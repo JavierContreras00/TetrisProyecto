@@ -50,11 +50,11 @@ public class ventanaPrincipal extends JFrame {
 		setContentPane(absPane);
 		absPane.setLayout(null);
 		
-		JButton btnPlay = new JButton("Play");
-		btnPlay.setAction(Play);
-		btnPlay.setBounds(100, 72, 85, 21);
-		absPane.add(btnPlay);
-		btnPlay.addActionListener(new ActionListener() {
+		JButton btnJugar = new JButton("Jugar");
+		btnJugar.setAction(Play);
+		btnJugar.setBounds(88, 44, 108, 21);
+		absPane.add(btnJugar);
+		btnJugar.addActionListener(new ActionListener() {
 
 			/// LLamar a otra ventana
 			
@@ -66,12 +66,16 @@ public class ventanaPrincipal extends JFrame {
 		}
 		});
 		
-		JButton btnScore = new JButton("Score");
-		btnScore.setBounds(100, 103, 85, 21);
-		absPane.add(btnScore);
+		JButton btnPuntuacion = new JButton("Puntuacion");
+		btnPuntuacion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnPuntuacion.setBounds(88, 75, 108, 21);
+		absPane.add(btnPuntuacion);
 		
-		JButton btnOptions = new JButton("Options");
-		btnOptions.addActionListener(new ActionListener() {
+		JButton btnOpciones = new JButton("Opciones");
+		btnOpciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				/// ...
@@ -79,11 +83,11 @@ public class ventanaPrincipal extends JFrame {
 			}
 		});
 		
-		btnOptions.setBounds(100, 134, 85, 21);
-		absPane.add(btnOptions);
+		btnOpciones.setBounds(88, 106, 108, 21);
+		absPane.add(btnOpciones);
 		
 		JButton btnSalir = new JButton("Salir");
-		btnSalir.setBounds(100, 165, 85, 21);
+		btnSalir.setBounds(88, 165, 108, 21);
 		absPane.add(btnSalir);
 		
 		btnSalir.addActionListener(new ActionListener() {
@@ -95,9 +99,13 @@ public class ventanaPrincipal extends JFrame {
 		}
 				);
 		
-		JLabel lblTetrisdeusto = new JLabel("TetrisDeusto");
-		lblTetrisdeusto.setBounds(114, 35, 58, 13);
+		JLabel lblTetrisdeusto = new JLabel(" TetrisDeusto");
+		lblTetrisdeusto.setBounds(100, 10, 76, 13);
 		absPane.add(lblTetrisdeusto);
+		
+		JButton btnAyuda = new JButton("Ayuda");
+		btnAyuda.setBounds(88, 137, 108, 21);
+		absPane.add(btnAyuda);
 	}
 	
 	/// Accion del btnPlay
