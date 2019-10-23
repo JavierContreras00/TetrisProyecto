@@ -2,6 +2,8 @@ package Package;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -85,18 +87,28 @@ public class ventanaOpciones extends JFrame {
 		lblMusica.setBounds(10, 256, 46, 13);
 		contentPane.add(lblMusica);
 		
-		JButton btnContinuar = new JButton("Continuar");
-		btnContinuar.setBounds(93, 346, 85, 21);
-		contentPane.add(btnContinuar);
-		
 		JButton btnSalir = new JButton("Salir");
-		btnSalir.setBounds(222, 346, 85, 21);
+		btnSalir.setBounds(117, 355, 111, 21);
 		contentPane.add(btnSalir);
+		btnSalir.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ventanaPrincipal p = new ventanaPrincipal(); 
+				p.setVisible(true);
+				ventanaOpciones.this.dispose();
+				
+			}
+			
+		});
 		
 		JPanel panelRotarDerecha = new JPanel();
 		panelRotarDerecha.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panelRotarDerecha.setBounds(222, 50, 119, 13);
 		contentPane.add(panelRotarDerecha);
+		
+		JButton btnRderecha = new JButton("rDERECHA");
+		panelRotarDerecha.add(btnRderecha);
 		
 		JPanel panelRotarIzquierda = new JPanel();
 		panelRotarIzquierda.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));

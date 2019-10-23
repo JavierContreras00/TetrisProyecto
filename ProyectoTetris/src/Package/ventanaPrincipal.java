@@ -17,7 +17,6 @@ import javax.swing.Action;
 public class ventanaPrincipal extends JFrame {
 
 	private JPanel absPane;
-	private final Action Play = new SwingAction();
 
 	/**
 	 * Launch the application.
@@ -51,12 +50,12 @@ public class ventanaPrincipal extends JFrame {
 		absPane.setLayout(null);
 		
 		JButton btnJugar = new JButton("Jugar");
-		btnJugar.setAction(Play);
 		btnJugar.setBounds(88, 44, 108, 21);
 		absPane.add(btnJugar);
 		btnJugar.addActionListener(new ActionListener() {
 
 			/// LLamar a otra ventana
+			/// Este boton hay que cambiarlo cuando se haga la ventana del juego
 			
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -66,25 +65,35 @@ public class ventanaPrincipal extends JFrame {
 		}
 		});
 		
+		///------------------------------------------------------------------------------------------------------
+		
 		JButton btnPuntuacion = new JButton("Puntuacion");
 		btnPuntuacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				///...
+				
 			}
 		});
 		btnPuntuacion.setBounds(88, 75, 108, 21);
 		absPane.add(btnPuntuacion);
 		
+		///------------------------------------------------------------------------------------------------------------
+		
 		JButton btnOpciones = new JButton("Opciones");
 		btnOpciones.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
-				
-				/// ...
-				
+				ventanaOpciones o = new ventanaOpciones(); 
+				o.setVisible(true);
+				ventanaPrincipal.this.dispose();
 			}
 		});
 		
 		btnOpciones.setBounds(88, 106, 108, 21);
 		absPane.add(btnOpciones);
+		
+		///--------------------------------------------------------------------------------------------------------------
 		
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.setBounds(88, 165, 108, 21);
@@ -99,23 +108,28 @@ public class ventanaPrincipal extends JFrame {
 		}
 				);
 		
+		///-----------------------------------------------------------------------------------------------------------------
+		
 		JLabel lblTetrisdeusto = new JLabel(" TetrisDeusto");
 		lblTetrisdeusto.setBounds(100, 10, 76, 13);
 		absPane.add(lblTetrisdeusto);
 		
+		///-----------------------------------------------------------------------------------------------------------------
+		
 		JButton btnAyuda = new JButton("Ayuda");
 		btnAyuda.setBounds(88, 137, 108, 21);
 		absPane.add(btnAyuda);
+		btnAyuda.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ventanaAyuda a = new ventanaAyuda(); 
+				a.setVisible(true);
+				ventanaPrincipal.this.dispose();
+			}
+			
+		});
+		
 	}
 	
-	/// Accion del btnPlay
-	
-	private class SwingAction extends AbstractAction {
-		public SwingAction() {
-			putValue(NAME, "Play");
-			putValue(SHORT_DESCRIPTION, "");
-		}
-		public void actionPerformed(ActionEvent e) {
-		}
-	}
 }

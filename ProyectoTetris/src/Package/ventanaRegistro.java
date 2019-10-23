@@ -65,6 +65,8 @@ public class ventanaRegistro extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		///------------------------------------------------------------------------------------------------------
+		
 		
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setBounds(10, 23, 59, 13);
@@ -86,9 +88,20 @@ public class ventanaRegistro extends JFrame {
 		lblEdad.setBounds(10, 183, 46, 13);
 		contentPane.add(lblEdad);
 		
+		///--------------------------------------------------------------------------------------------------------
+		
 		JButton btnResgistrarse = new JButton("Resgistrarse");
 		btnResgistrarse.setBounds(91, 232, 124, 21);
 		contentPane.add(btnResgistrarse);
+		btnResgistrarse.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ventanaPrincipal p = new ventanaPrincipal(); 
+				p.setVisible(true);
+				ventanaRegistro.this.dispose();
+			}
+		});
 		
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.setBounds(225, 232, 125, 21);
@@ -99,8 +112,9 @@ public class ventanaRegistro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);	
 			}
-		}
-				);
+		});
+		
+		///---------------------------------------------------------------------------------------------------------
 		
 		textNombre = new JTextField();
 		textNombre.setBounds(89, 20, 311, 19);
@@ -126,11 +140,11 @@ public class ventanaRegistro extends JFrame {
 					passwordContrasenya.setVisible(true);
 					textContrasenya.setText(textContrasenya.getText());
 					mostrar = true; 
-					
-				}
-				
+				}	
 			}
 		});
+		
+		///----------------------------------------------------------------------------------------------------------
 		
 		textCorreo = new JTextField();
 		textCorreo.setBounds(89, 100, 311, 19);
@@ -151,6 +165,8 @@ public class ventanaRegistro extends JFrame {
 		contentPane.add(textContrasenya);
 		textContrasenya.setColumns(10);
 		
+		///-----------------------------------------------------------------------------------------------------------------
+		
 		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
 		Sexo.add(rdbtnMasculino);
 		rdbtnMasculino.setBounds(91, 139, 91, 21);
@@ -164,16 +180,6 @@ public class ventanaRegistro extends JFrame {
 		JRadioButton rdbtnOtro = new JRadioButton("Otro");
 		Sexo.add(rdbtnOtro);
 		rdbtnOtro.setBounds(279, 139, 71, 21);
-		contentPane.add(rdbtnOtro);
-		
-	  
-	}
-	private class SwingAction extends AbstractAction {
-		public SwingAction() {
-			putValue(NAME, "SwingAction");
-			putValue(SHORT_DESCRIPTION, "Some short description");
-		}
-		public void actionPerformed(ActionEvent e) {
-		}
+		contentPane.add(rdbtnOtro);  
 	}
 }
