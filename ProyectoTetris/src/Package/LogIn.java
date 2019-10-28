@@ -106,6 +106,14 @@ public class LogIn extends JFrame {
 		jpassclave = new JPasswordField();
 		jpassclave.setBounds(139, 115, 116, 18);
 		contentPane.add(jpassclave);
+		
+		JButton btnLogin = new JButton("Login");
+		btnLogin.setBounds(267, 76, 116, 16);
+		contentPane.add(btnLogin);
+		
+		JButton btnRegistrarse = new JButton("Registrarse");
+		btnRegistrarse.setBounds(267, 112, 116, 25);
+		contentPane.add(btnRegistrarse);
 
 		
 
