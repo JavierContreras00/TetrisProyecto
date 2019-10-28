@@ -1,3 +1,4 @@
+package Package;
 
 
 import java.awt.BorderLayout;
@@ -19,8 +20,6 @@ import javax.swing.JPasswordField;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.border.LineBorder;
-
-import Package.ventanaPrincipal;
 
 import java.awt.Color;
 import javax.swing.JToggleButton;

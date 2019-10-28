@@ -147,7 +147,7 @@ public class LogIn extends JFrame {
 
 				}
 
-		}{;
+		 {
 
 		btnIngresar.setBounds(288, 72, 97, 25);
 		contentPane.add(btnIngresar);
@@ -158,4 +158,8 @@ public class LogIn extends JFrame {
 		contentPane.add(txtpnAunNoTienes);
 
 	}
-);}}
+
+		} 
+		});
+	}
+	}

@@ -6,9 +6,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import ventanaRegistro;
-
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -62,7 +59,7 @@ public class ventanaPrincipal extends JFrame {
 			
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			 ventanaRegistro r = new ventanaRegistro(); 
+			ventanaRegistro r = new ventanaRegistro(); 
 			   r.setVisible(true);
 			   ventanaPrincipal.this.dispose();	
 		}
