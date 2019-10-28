@@ -17,6 +17,7 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextPane;
 
 
 public class LogIn extends JFrame {
@@ -64,7 +65,7 @@ public class LogIn extends JFrame {
 	public LogIn() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 205);
+		setBounds(100, 100, 470, 238);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -113,6 +114,13 @@ public class LogIn extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				
+				
+			
+				
+				
+				
+				
+			
 
 			char[] clave = jpassclave.getPassword();
 				String claveFinal = new String (clave);
@@ -127,6 +135,7 @@ public class LogIn extends JFrame {
 				}else {
 
       JOptionPane.showMessageDialog ( null, "Usuario o contrasena incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+      
       txtusuario.setText(" ");
       jpassclave.setText(" ");
       txtusuario.requestFocus();
@@ -136,13 +145,17 @@ public class LogIn extends JFrame {
       
       
 
-				}}
+				}
 
-		});
+		}{;
 
 		btnIngresar.setBounds(288, 72, 97, 25);
 		contentPane.add(btnIngresar);
+		
+		JTextPane txtpnAunNoTienes = new JTextPane();
+		txtpnAunNoTienes.setText("Aun no tienes cuenta? Registrate aqui");
+		txtpnAunNoTienes.setBounds(44, 156, 211, 22);
+		contentPane.add(txtpnAunNoTienes);
 
 	}
-
-}
+);}}
