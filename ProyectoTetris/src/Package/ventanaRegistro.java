@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
@@ -56,34 +57,6 @@ public class ventanaRegistro extends JFrame {
 		});
 	}
 
-	public static void conectar() {
-		
-		try {
-			Class.forName("org.sqlite.JDBC");
-			
-			Connection conn = DriverManager.getConnection("jdbc:sqlite:data/bdtetris.db");
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT nombre, contraseña, correo, sexo, edad FROM usuarios");
-		   
-			while(rs.next()) {
-				String nombre = rs.getString("nombre");
-				String contrasenya = rs.getString("contraseña");
-				String correo = rs.getString("correo"); 
-				String sexo = rs.getString("sexo"); 
-				Double edad = rs.getDouble("edad"); 
-
-				System.out.println("Nombre;" +nombre + "Contraseña" + contrasenya + "Correo" + correo + "Sexo" + sexo + "Edad" + edad);
-			}
-		         stmt.close();
-		         conn.close();
-
-		    } catch (ClassNotFoundException e) {
-		         System.out.println("No se ha podido cargar el driver");
-		    } catch (SQLException e) {
-		         System.out.println("No se ha podido cargar la BD");
-		    }
-		}
-
 	public boolean mostrar = true; 
 	public static ButtonGroup Sexo = new ButtonGroup();
 	
@@ -124,15 +97,68 @@ public class ventanaRegistro extends JFrame {
 		JButton btnResgistrarse = new JButton("Resgistrarse");
 		btnResgistrarse.setBounds(91, 232, 124, 21);
 		contentPane.add(btnResgistrarse);
-		btnResgistrarse.addActionListener(new ActionListener() {
+		
+		///Corregir BD
+		
+	/*	btnResgistrarse.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ventanaPrincipal p = new ventanaPrincipal(); 
-				p.setVisible(true);
-				ventanaRegistro.this.dispose();
-			}
-		});
+				
+				String nombre; 
+				String contrasenya; 
+				String correo; 
+				String sexo; 
+				int edad; 
+				
+				nombre = textNombre.getText();
+				contrasenya = passwordContrasenya.getText();
+				correo = textCorreo.getText();
+				sexo =  
+				edad = 
+				
+				try {
+					
+					if (nombre.equals("") || contrasenya.equals("") || correo.equals("")) {
+						JOptionPane.showMessageDialog(null, "Alguno de los valores estan vacios");
+					} else {
+						
+						if (correo.contains("@") && correo.contains(".")); {
+						
+						Class.forName("org.sqlite.JDBC");
+						
+						Connection conn = DriverManager.getConnection("jdbc:sqlite:data/bdtetris.db");
+						Statement stmt = conn.createStatement();
+						
+						String query = stmt.executeQuery("INSERT INTO  usuarios (nombre, contraseña, correo, sexo, edad) VALUES ('" + nombre + ", " + contrasenya + ", " + correo + ", " + sexo + ", " + edad + "'));
+						stmt.executeUpdate(query);
+						
+						JOptionPane.showMessageDialog(null, "Cuenta creada correctamente", "Correcto", 0); 
+
+					  
+					         stmt.close();
+					         conn.close();
+					         
+					         ventanaPrincipal p = new ventanaPrincipal(); 
+								p.setVisible(true);
+								ventanaRegistro.this.dispose();
+								
+					} else {
+				
+						JOptionPane.showMessageDialog(null, "Direccion de correo no valida", "Error", 0); 
+					}
+				}
+					
+		   } catch (ClassNotFoundException e1) {
+					 System.out.println("No se ha podido cargar el driver");
+		   } catch (SQLException e1) {
+			         System.out.println("No se ha podido cargar la BD");
+		   }
+		
+		}			
+});
+		
+		*/
 		
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.setBounds(225, 232, 125, 21);

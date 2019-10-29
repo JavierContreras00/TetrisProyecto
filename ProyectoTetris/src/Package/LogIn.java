@@ -63,7 +63,7 @@ public class LogIn extends JFrame {
 		
 		Connection conn = DriverManager.getConnection("jdbc:sqlite:data/bdtetris.db");
 		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT Nombre, Apellidos FROM usuarios");
+		ResultSet rs = stmt.executeQuery("SELECT nombre, contraseña FROM usuarios");
 	   
 		while(rs.next()) {
 			String nombre = rs.getString("nombre");
