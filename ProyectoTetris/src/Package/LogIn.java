@@ -16,6 +16,11 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 
@@ -51,16 +56,30 @@ public class LogIn extends JFrame {
 
 	}
 
+	public static void conectar() {
+		
+	try {
+		Class.forName("org.sqlite.JDBC");
+		
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:data/bdtetris.db");
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT Nombre, Apellidos FROM usuarios");
+	   
+		while(rs.next()) {
+			String nombre = rs.getString("nombre");
+			String apellido = rs.getString("apellido");
 
+			System.out.println("Nombre;" +nombre + "apellido" + apellido);
+		}
+	         stmt.close();
+	         conn.close();
 
-	/**
-
-	 * Create the frame.
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/contre00/TetrisProyecto.git
-	 */
+	    } catch (ClassNotFoundException e) {
+	         System.out.println("No se ha podido cargar el driver");
+	    } catch (SQLException e) {
+	         System.out.println("No se ha podido cargar la BD");
+	    }
+	}
 
 	public LogIn() {
 
