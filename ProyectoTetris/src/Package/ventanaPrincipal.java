@@ -52,18 +52,6 @@ public class ventanaPrincipal extends JFrame {
 		JButton btnJugar = new JButton("Jugar");
 		btnJugar.setBounds(88, 44, 108, 21);
 		absPane.add(btnJugar);
-		btnJugar.addActionListener(new ActionListener() {
-
-			/// LLamar a otra ventana
-			/// Este boton hay que cambiarlo cuando se haga la ventana del juego
-			
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			ventanaRegistro r = new ventanaRegistro(); 
-			   r.setVisible(true);
-			   ventanaPrincipal.this.dispose();	
-		}
-		});
 		
 		///------------------------------------------------------------------------------------------------------
 		
