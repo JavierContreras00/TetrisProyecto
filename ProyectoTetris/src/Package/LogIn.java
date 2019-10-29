@@ -129,6 +129,18 @@ public class LogIn extends JFrame {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.setBounds(267, 76, 116, 16);
 		contentPane.add(btnLogin);
+		btnLogin.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ventanaPrincipal p = new ventanaPrincipal(); 
+				p.setVisible(true);
+				LogIn.this.dispose();
+				
+			}
+			
+		});
+		
 		
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.setBounds(267, 112, 116, 25);
@@ -136,9 +148,9 @@ public class LogIn extends JFrame {
 		btnRegistrarse.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				LogIn l = new LogIn();
-				l.setVisible(true);
-				ventanaRegistro.this.dispose();
+				ventanaRegistro r = new ventanaRegistro();
+				r.setVisible(true);
+				LogIn.this.dispose();
 				
 			}
 			
