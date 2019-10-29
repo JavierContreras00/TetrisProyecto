@@ -5,6 +5,11 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -51,10 +56,34 @@ public class ventanaRegistro extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
-	
+	public static void conectar() {
+		
+		try {
+			Class.forName("org.sqlite.JDBC");
+			
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:data/bdtetris.db");
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT nombre, contraseña, correo, sexo, edad FROM usuarios");
+		   
+			while(rs.next()) {
+				String nombre = rs.getString("nombre");
+				String contrasenya = rs.getString("contraseña");
+				String correo = rs.getString("correo"); 
+				String sexo = rs.getString("sexo"); 
+				Double edad = rs.getDouble("edad"); 
+
+				System.out.println("Nombre;" +nombre + "Contraseña" + contrasenya + "Correo" + correo + "Sexo" + sexo + "Edad" + edad);
+			}
+		         stmt.close();
+		         conn.close();
+
+		    } catch (ClassNotFoundException e) {
+		         System.out.println("No se ha podido cargar el driver");
+		    } catch (SQLException e) {
+		         System.out.println("No se ha podido cargar la BD");
+		    }
+		}
+
 	public boolean mostrar = true; 
 	public static ButtonGroup Sexo = new ButtonGroup();
 	

@@ -67,9 +67,9 @@ public class LogIn extends JFrame {
 	   
 		while(rs.next()) {
 			String nombre = rs.getString("nombre");
-			String apellido = rs.getString("apellido");
+			String contrasenya = rs.getString("contraseña");
 
-			System.out.println("Nombre;" +nombre + "apellido" + apellido);
+			System.out.println("Nombre;" + nombre + "Contraseña" + contrasenya);
 		}
 	         stmt.close();
 	         conn.close();
