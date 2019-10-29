@@ -100,7 +100,7 @@ public class ventanaRegistro extends JFrame {
 		
 		///Corregir BD
 		
-	/*	btnResgistrarse.addActionListener(new ActionListener() {
+		btnResgistrarse.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -114,8 +114,8 @@ public class ventanaRegistro extends JFrame {
 				nombre = textNombre.getText();
 				contrasenya = passwordContrasenya.getText();
 				correo = textCorreo.getText();
-				sexo =  
-				edad = 
+				//sexo = 
+			    //edad= 
 				
 				try {
 					
@@ -130,10 +130,10 @@ public class ventanaRegistro extends JFrame {
 						Connection conn = DriverManager.getConnection("jdbc:sqlite:data/bdtetris.db");
 						Statement stmt = conn.createStatement();
 						
-						String query = stmt.executeQuery("INSERT INTO  usuarios (nombre, contraseña, correo, sexo, edad) VALUES ('" + nombre + ", " + contrasenya + ", " + correo + ", " + sexo + ", " + edad + "'));
-						stmt.executeUpdate(query);
+						//String query = "INSERT INTO  usuarios (nombre, contraseña, correo, sexo, edad) VALUES ('" + nombre + "', '" + contrasenya + "', '" + correo + "', '" + sexo + "', '" + edad + "')";
+						//stmt.executeUpdate(query);
 						
-						JOptionPane.showMessageDialog(null, "Cuenta creada correctamente", "Correcto", 0); 
+						JOptionPane.showMessageDialog(null, "Cuenta creada correctamente", "Correcto", 1); 
 
 					  
 					         stmt.close();
@@ -142,23 +142,20 @@ public class ventanaRegistro extends JFrame {
 					         ventanaPrincipal p = new ventanaPrincipal(); 
 								p.setVisible(true);
 								ventanaRegistro.this.dispose();
-								
-					} else {
 				
 						JOptionPane.showMessageDialog(null, "Direccion de correo no valida", "Error", 0); 
-					}
-				}
-					
-		   } catch (ClassNotFoundException e1) {
+					}	
+			      }
+			} catch (ClassNotFoundException e1) {
 					 System.out.println("No se ha podido cargar el driver");
 		   } catch (SQLException e1) {
 			         System.out.println("No se ha podido cargar la BD");
 		   }
 		
-		}			
+		} 
 });
 		
-		*/
+		
 		
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.setBounds(225, 232, 125, 21);
