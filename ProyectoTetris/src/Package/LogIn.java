@@ -133,14 +133,22 @@ public class LogIn extends JFrame {
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.setBounds(267, 112, 116, 25);
 		contentPane.add(btnRegistrarse);
+		btnRegistrarse.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				LogIn l = new LogIn();
+				l.setVisible(true);
+				ventanaRegistro.this.dispose();
+				
+			}
+			
+		});
 
 		
 
 		btnIngresar = new JButton("Ingresar");
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				
 				
 			
 				
