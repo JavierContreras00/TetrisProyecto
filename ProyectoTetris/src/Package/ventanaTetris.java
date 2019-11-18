@@ -1,42 +1,34 @@
 package Package;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
-public class ventanaTetris extends JFrame {
+public class ventanaTetris {
+	
+	public static final int ancho = 315 , alto = 577; 
+	private JFrame ventanaTetris; 
+	private TableroTetris tablero; 
 
-	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ventanaTetris frame = new ventanaTetris();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		new ventanaTetris(); 
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public ventanaTetris() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+	  ventanaTetris =new JFrame("Tetris Juego"); 
+	  ventanaTetris.setSize(ancho, alto);
+	  ventanaTetris.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	  ventanaTetris.setResizable(false);
+	  ventanaTetris.setLocationRelativeTo(null);
+	  
+	  tablero = new TableroTetris(); 
+	  
+	  ventanaTetris.add(tablero); 
+	  ventanaTetris.addKeyListener(tablero); 
+	  
+	  
+	  ventanaTetris.setVisible(true);
 	}
+	
 
 }
