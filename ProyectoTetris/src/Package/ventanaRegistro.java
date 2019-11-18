@@ -115,7 +115,7 @@ public class ventanaRegistro extends JFrame {
 				contrasenya = passwordContrasenya.getText();
 				correo = textCorreo.getText();
 				//sexo = 
-			    //edad= 
+			    //edad= comboBoxEdad
 				
 				try {
 					
