@@ -17,16 +17,13 @@ public class TableroTetris extends JPanel implements KeyListener {
 	private final int bloquesTamanyo = 30; 
 	private final int tableroAncho = 10, tableroAlto = 20; 
 	
-	private int [][] tableroTetris = new int[tableroAncho][tableroAlto]; 
+	private int [][] tableroTetris = new int[tableroAlto][tableroAncho]; 
 	
 	private FormaTetris[] formas = new FormaTetris[7]; 
-	
     private FormaTetris formaActual; 
     
     private Timer tiempo; 
-    
     private final int FPS = 60; 
-    
     private final int delay = 1000/FPS; 
 	
 	public TableroTetris() {
@@ -100,7 +97,7 @@ public class TableroTetris extends JPanel implements KeyListener {
 			{1, 1}
 		}, this); 
 		
-		formaActual = formas[5]; 
+		siguienteForma(); 
    }
 	
 	public void descarga() {
@@ -112,7 +109,13 @@ public class TableroTetris extends JPanel implements KeyListener {
 		
 		formaActual.reproducir(g);
 		
-		//Crear bloques del tablero.
+		for(int fila = 0; fila < tableroTetris.length; fila++)
+		    for(int col = 0; col < tableroTetris[fila].length; col++)
+		    	if(tableroTetris[fila][col] != 0)
+		    		g.drawImage(bloques.getSubimage(0, 0, bloquesTamanyo, bloquesTamanyo), col * bloquesTamanyo, fila * bloquesTamanyo, null); 
+		    	
+		
+		//Crear tablero.
 		
 		//Lineas Horizontales
 		for (int i = 0; i < tableroAlto; i++) {
@@ -123,6 +126,20 @@ public class TableroTetris extends JPanel implements KeyListener {
 		for (int j = 0; j < tableroAncho; j++) {
 			g.drawLine(j*bloquesTamanyo, 0 , j*bloquesTamanyo, tableroAlto*bloquesTamanyo);
 		}
+	}
+	
+	
+	public void siguienteForma() {
+		
+		int index = (int)(Math.random()*tableroTetris.length); 
+		
+		FormaTetris nuevaForma = new FormaTetris(formas[index].getBloques(), formas[index].getCor(), this); 
+		
+		formaActual = nuevaForma; 
+	}
+	
+	public int[][] getTablero() {
+		return tableroTetris; 
 	}
 	
 	public int getTamanyoBloque() {
@@ -145,9 +162,9 @@ public class TableroTetris extends JPanel implements KeyListener {
 			formaActual.setDeltaX(1);
 		if(e.getKeyCode() == KeyEvent.VK_DOWN)
 			formaActual.bVelocidad();
-		if(e.getKeyCode() == KeyEvent.VK_UP)
-			formaActual.rotar();
-	}
+		if(e.getKeyCode() == KeyEvent.VK_UP)                  // [ 1, 1]  --> [0, 1]
+			formaActual.rotar();                              // [ 0, 1]  --> [0, 1]
+	}                                                         // [ 0, 1]  --> [1, 1]
 
 	@Override
 	public void keyReleased(KeyEvent e) {

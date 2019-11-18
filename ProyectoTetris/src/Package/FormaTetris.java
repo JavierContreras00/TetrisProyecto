@@ -12,6 +12,8 @@ public class FormaTetris {
 	public int deltaX = 0; 
 	private int x, y; 
 	
+	private boolean colision = false, ejeX = false; 
+	
 	private int nVelocidad = 600, bVelocidad = 100, velocidadActual; 
 	private long tiempo, uTiempo; 
 	
@@ -35,14 +37,45 @@ public class FormaTetris {
 		tiempo += System.currentTimeMillis()-uTiempo; 
 		uTiempo = System.currentTimeMillis(); 
 		
+		//Cuando choque con el suelo sale la siguiente forma
+		
+		if (colision) {
+			
+			for(int fila = 0; fila < cor.length; fila++)
+			    for(int col = 0; col < cor[fila].length; col++)
+			    	if(cor[fila][col] != 0)
+			    		tablero.getTablero() [y + fila][x + col] = 1; 
+			
+			tablero.siguienteForma();
+		}
+		
 		//Limites laterales del tetris
 	
-	if(!(x + deltaX + cor[0].length > 10) && !(x + deltaX < 0))	
+	if(!(x + deltaX + cor[0].length > 10) && !(x + deltaX < 0))	{
 		
-	 x += deltaX; 
-	
+		// Colision en el eje X 
+		
+		for(int fila = 0; fila < cor.length; fila++)
+		    for(int col = 0; col < cor[fila].length; col++)
+		    	if(cor[fila][col] != 0) {
+		    		if(tablero.getTablero() [y + fila ][x + deltaX + col] !=0)
+		    			ejeX = false; 
+		    	}
+		if (ejeX)
+		x += deltaX; 
+	}
 
 	if (!(y +1 + cor.length > 18)) {
+		
+		// Colision Vertical
+		
+		for(int fila = 0; fila < cor.length; fila++)
+		    for(int col = 0; col < cor[fila].length; col++)
+		    	if(cor[fila][col] != 0) {
+		    		
+		    		if(tablero.getTablero() [y + fila + 1][col + x] !=0)
+		    			colision = true; 
+		    	}
 		
 		if (tiempo > velocidadActual) {
 			
@@ -50,9 +83,12 @@ public class FormaTetris {
 			  tiempo = 0; 
 			  
 			}
+	} else {
+		colision = true; 
 	}
 	
 	 deltaX = 0; 
+	 ejeX = true; 
 	 
 	}
 	
@@ -71,7 +107,7 @@ public class FormaTetris {
 		
 		rotarMatriz = getTranspuesta(cor); 
 		
-		rotarMatriz = getTranspuestaMatriz(rotarMatriz); 
+		rotarMatriz = getContrariaMatriz(rotarMatriz); 
 		
 		if(x + rotarMatriz[0].length > 10 || y + rotarMatriz.length > 20 )
 		  return; 
@@ -91,13 +127,13 @@ public class FormaTetris {
 		return nMatriz; 
 	}
 	
-	private int[][] getTranspuestaMatriz(int [][] matriz) {
+	private int[][] getContrariaMatriz(int [][] matriz) {
 		
 		int medio = matriz.length / 2; 
 		
 		for(int i = 0; i < medio; i++) {
-			int[] m = matriz[1]; 
-			matriz[1] = matriz[matriz.length - i - 1];
+			int[] m = matriz[i]; 
+			matriz[i] = matriz[matriz.length - i - 1];
 			matriz[matriz.length - i - 1] = m; 
 		}
 		
@@ -114,6 +150,14 @@ public class FormaTetris {
 	
 	public void bVelocidad() {
 		velocidadActual = bVelocidad; 
+	}
+
+	public BufferedImage getBloques() {
+		return bloques;
+	}
+
+	public int[][] getCor() {
+		return cor;
 	}
 	
 }
