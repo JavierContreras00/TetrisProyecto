@@ -53,7 +53,7 @@ public class ventanaPrincipal extends JFrame {
 		btnJugar.setBounds(88, 44, 108, 21);
 		absPane.add(btnJugar);
 		
-		///------------------------------------------------------------------------------------------------------
+		
 		
 		JButton btnPuntuacion = new JButton("Puntuacion");
 		btnPuntuacion.addActionListener(new ActionListener() {
@@ -66,7 +66,7 @@ public class ventanaPrincipal extends JFrame {
 		btnPuntuacion.setBounds(88, 75, 108, 21);
 		absPane.add(btnPuntuacion);
 		
-		///------------------------------------------------------------------------------------------------------------
+		
 		
 		JButton btnOpciones = new JButton("Opciones");
 		btnOpciones.addActionListener(new ActionListener() {
@@ -81,7 +81,7 @@ public class ventanaPrincipal extends JFrame {
 		btnOpciones.setBounds(88, 106, 108, 21);
 		absPane.add(btnOpciones);
 		
-		///--------------------------------------------------------------------------------------------------------------
+		
 		
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.setBounds(88, 165, 108, 21);
@@ -96,13 +96,13 @@ public class ventanaPrincipal extends JFrame {
 		}
 				);
 		
-		///-----------------------------------------------------------------------------------------------------------------
+		
 		
 		JLabel lblTetrisdeusto = new JLabel(" TetrisDeusto");
 		lblTetrisdeusto.setBounds(100, 10, 76, 13);
 		absPane.add(lblTetrisdeusto);
 		
-		///-----------------------------------------------------------------------------------------------------------------
+
 		
 		JButton btnAyuda = new JButton("Ayuda");
 		btnAyuda.setBounds(88, 137, 108, 21);

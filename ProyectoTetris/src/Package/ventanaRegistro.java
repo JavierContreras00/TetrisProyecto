@@ -69,7 +69,7 @@ public class ventanaRegistro extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		///------------------------------------------------------------------------------------------------------
+		
 		
 		
 		JLabel lblNombre = new JLabel("Nombre:");
@@ -92,69 +92,10 @@ public class ventanaRegistro extends JFrame {
 		lblEdad.setBounds(10, 183, 46, 13);
 		contentPane.add(lblEdad);
 		
-		///--------------------------------------------------------------------------------------------------------
 		
 		JButton btnResgistrarse = new JButton("Resgistrarse");
 		btnResgistrarse.setBounds(91, 232, 124, 21);
 		contentPane.add(btnResgistrarse);
-		
-		///Corregir BD
-		
-		btnResgistrarse.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				String nombre; 
-				String contrasenya; 
-				String correo; 
-				String sexo; 
-				int edad; 
-				
-				nombre = textNombre.getText();
-				contrasenya = passwordContrasenya.getText();
-				correo = textCorreo.getText();
-				//sexo = 
-			    //edad= comboBoxEdad
-				
-				try {
-					
-					if (nombre.equals("") || contrasenya.equals("") || correo.equals("")) {
-						JOptionPane.showMessageDialog(null, "Alguno de los valores estan vacios");
-					} else {
-						
-						if (correo.contains("@") && correo.contains(".")); {
-						
-						Class.forName("org.sqlite.JDBC");
-						
-						Connection conn = DriverManager.getConnection("jdbc:sqlite:data/bdtetris.db");
-						Statement stmt = conn.createStatement();
-						
-						//String query = "INSERT INTO  usuarios (nombre, contraseña, correo, sexo, edad) VALUES ('" + nombre + "', '" + contrasenya + "', '" + correo + "', '" + sexo + "', '" + edad + "')";
-						//stmt.executeUpdate(query);
-						
-						JOptionPane.showMessageDialog(null, "Cuenta creada correctamente", "Correcto", 1); 
-
-					  
-					         stmt.close();
-					         conn.close();
-					         
-					         ventanaPrincipal p = new ventanaPrincipal(); 
-								p.setVisible(true);
-								ventanaRegistro.this.dispose();
-				
-						JOptionPane.showMessageDialog(null, "Direccion de correo no valida", "Error", 0); 
-					}	
-			      }
-			} catch (ClassNotFoundException e1) {
-					 System.out.println("No se ha podido cargar el driver");
-		   } catch (SQLException e1) {
-			         System.out.println("No se ha podido cargar la BD");
-		   }
-		
-		} 
-});
-		
 		
 		
 		JButton btnSalir = new JButton("Salir");
@@ -168,7 +109,6 @@ public class ventanaRegistro extends JFrame {
 			}
 		});
 		
-		///---------------------------------------------------------------------------------------------------------
 		
 		textNombre = new JTextField();
 		textNombre.setBounds(89, 20, 311, 19);
@@ -198,7 +138,6 @@ public class ventanaRegistro extends JFrame {
 			}
 		});
 		
-		///----------------------------------------------------------------------------------------------------------
 		
 		textCorreo = new JTextField();
 		textCorreo.setBounds(89, 100, 311, 19);
@@ -219,7 +158,6 @@ public class ventanaRegistro extends JFrame {
 		contentPane.add(textContrasenya);
 		textContrasenya.setColumns(10);
 		
-		///-----------------------------------------------------------------------------------------------------------------
 		
 		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
 		Sexo.add(rdbtnMasculino);
@@ -235,5 +173,63 @@ public class ventanaRegistro extends JFrame {
 		Sexo.add(rdbtnOtro);
 		rdbtnOtro.setBounds(279, 139, 71, 21);
 		contentPane.add(rdbtnOtro);  
+		
+		///Corregir BD No se conecta al driver
+		
+		btnResgistrarse.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				String nombre; 
+				String contrasenya; 
+				String correo; 
+				String sexo; 
+				String edad; 
+				
+				nombre = textNombre.getText();
+				contrasenya = passwordContrasenya.getText();
+				correo = textCorreo.getText();
+				sexo = JRadioButton.getDefaultLocale().toString(); 
+			    edad= comboBoxEdad.getSelectedItem().toString(); 
+				
+				try {
+					
+					if (nombre.equals("") || contrasenya.equals("") || correo.equals("")) {
+						JOptionPane.showMessageDialog(null, "Alguno de los valores estan vacios");
+					} else {
+						
+						if (correo.contains("@") && correo.contains(".")); {
+						
+						Class.forName("org.sqlite.JDBC");
+						
+						Connection conn = DriverManager.getConnection("jdbc:sqlite:data/bdtetris.db");
+						Statement stmt = conn.createStatement();
+						
+						String query = "INSERT INTO  usuarios (nombre, contraseña, correo, sexo, edad) VALUES ('" + nombre + "', '" + contrasenya + "', '" + correo + "', '" + sexo + "', '" + edad + "')";
+						stmt.executeUpdate(query);
+						
+						JOptionPane.showMessageDialog(null, "Cuenta creada correctamente", "Correcto", 1); 
+
+					  
+					         stmt.close();
+					         conn.close();
+					         
+					         ventanaPrincipal p = new ventanaPrincipal(); 
+								p.setVisible(true);
+								ventanaRegistro.this.dispose();
+				
+						JOptionPane.showMessageDialog(null, "Direccion de correo no valida", "Error", 0); 
+					}	
+			      }
+			} catch (ClassNotFoundException e1) {
+					 System.out.println("No se ha podido cargar el driver");
+		   } catch (SQLException e1) {
+			         System.out.println("No se ha podido cargar la BD");
+		   }
+		
+		} 
+});
+		
 	}
 }

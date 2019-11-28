@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -133,9 +134,44 @@ public class LogIn extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ventanaPrincipal p = new ventanaPrincipal(); 
-				p.setVisible(true);
-				LogIn.this.dispose();
+				String nombre; 
+				String contrasenya; 
+				
+				nombre = txtusuario.getText();
+				contrasenya = jpassclave.getText();
+				
+				try {
+					
+					if (nombre.equals("") || contrasenya.equals("") ) {
+						JOptionPane.showMessageDialog(null, "Alguno de los valores estan vacios");
+					} else {
+						
+						Class.forName("org.sqlite.JDBC");
+						
+						Connection conn = DriverManager.getConnection("jdbc:sqlite:data/bdtetris.db");
+						Statement stmt = conn.createStatement();
+						
+						String query = "INSERT INTO  usuarios (nombre, contraseña) VALUES ('" + nombre + "', '" + contrasenya + "')";
+						stmt.executeUpdate(query);
+						
+						JOptionPane.showMessageDialog(null, "Cuenta creada correctamente", "Correcto", 1); 
+
+					  
+					         stmt.close();
+					         conn.close();
+					         
+					         ventanaPrincipal p = new ventanaPrincipal(); 
+								p.setVisible(true);
+								LogIn.this.dispose();
+				
+						JOptionPane.showMessageDialog(null, "Direccion de correo no valida", "Error", 0); 
+					}	
+			      }
+		     catch (ClassNotFoundException e2) {
+					 System.out.println("No se ha podido cargar el driver");
+		   } catch (SQLException e2) {
+			         System.out.println("No se ha podido cargar la BD");
+		   }
 				
 			}
 			
@@ -155,6 +191,7 @@ public class LogIn extends JFrame {
 			}
 			
 		});
+		
 
 		
 
@@ -162,13 +199,6 @@ public class LogIn extends JFrame {
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-			
-				
-				
-				
-				
-			
-
 			char[] clave = jpassclave.getPassword();
 				String claveFinal = new String (clave);
 
@@ -189,8 +219,6 @@ public class LogIn extends JFrame {
 
       
  //prueba
-      
-      
 
 				}
 

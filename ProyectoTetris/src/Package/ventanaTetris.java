@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 public class ventanaTetris {
 	
-	public static final int ancho = 315 , alto = 577; 
+	public static final int ancho = 445, alto = 577; 
 	private JFrame ventanaTetris; 
 	private TableroTetris tablero; 
 
