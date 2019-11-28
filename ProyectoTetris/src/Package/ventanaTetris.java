@@ -1,5 +1,6 @@
 package Package;
 
+
 import javax.swing.JFrame;
 
 public class ventanaTetris {
@@ -9,12 +10,12 @@ public class ventanaTetris {
 	private TableroTetris tablero; 
 
 	
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
 		new ventanaTetris(); 
 	}
 
 	
-	public ventanaTetris() {
+	public ventanaTetris()  {
 	  ventanaTetris =new JFrame("Tetris Juego"); 
 	  ventanaTetris.setSize(ancho, alto);
 	  ventanaTetris.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
