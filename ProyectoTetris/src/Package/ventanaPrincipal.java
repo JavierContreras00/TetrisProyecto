@@ -52,6 +52,17 @@ public class ventanaPrincipal extends JFrame {
 		JButton btnJugar = new JButton("Jugar");
 		btnJugar.setBounds(88, 44, 108, 21);
 		absPane.add(btnJugar);
+		btnJugar.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				
+				ventanaTetris v = new ventanaTetris(); 
+				ventanaPrincipal.this.dispose();
+			
+				
+			}
+			
+		});
 		
 		
 		
@@ -59,7 +70,9 @@ public class ventanaPrincipal extends JFrame {
 		btnPuntuacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				///...
+				ventanaPuntuacion o = new ventanaPuntuacion(); 
+				o.setVisible(true);
+				ventanaPrincipal.this.dispose();
 				
 			}
 		});
