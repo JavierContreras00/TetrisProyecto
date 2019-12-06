@@ -29,14 +29,13 @@ public class TableroTetris extends JPanel implements KeyListener {
     
     private boolean Final = false; 
 	
-	public TableroTetris(){
-		
+	public TableroTetris() {
 		
 		try {
-			bloques = ImageIO.read(TableroTetris.class.getResource("/o7Q40Cn.png"));
-		} catch (IOException e1) {
+			bloques = ImageIO.read(TableroTetris.class.getResource("/o7Q40Cn.png")); 
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			e.printStackTrace();
 		}
 		
 		
@@ -138,6 +137,7 @@ public class TableroTetris extends JPanel implements KeyListener {
 		}
 		
 		formaActual.reproducir(g);
+	
 	}
 	
 	//Sale siguiete figura
