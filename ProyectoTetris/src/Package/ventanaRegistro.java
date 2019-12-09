@@ -109,13 +109,13 @@ public class ventanaRegistro extends JFrame {
 				String contrasenya; 
 				String correo; 
 				String sexo; 
-				int edad; 
+				String edad; 
 				
 				nombre = textNombre.getText();
 				contrasenya = passwordContrasenya.getText();
 				correo = textCorreo.getText();
 				//sexo = 
-			    //edad= comboBoxEdad
+			    edad = comboBoxEdad.getSelectedItem().toString();
 				
 				try {
 					
