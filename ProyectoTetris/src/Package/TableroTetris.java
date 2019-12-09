@@ -13,7 +13,7 @@ import javax.swing.*;
 
 public class TableroTetris extends JPanel implements KeyListener {
 	
-	private BufferedImage bloques;
+	private BufferedImage bloques, fondo;
 	
 	private final int bloquesTamanyo = 30; 
 	private final int tableroAncho = 10, tableroAlto = 20; 
@@ -33,6 +33,7 @@ public class TableroTetris extends JPanel implements KeyListener {
 		
 		try {
 			bloques = ImageIO.read(TableroTetris.class.getResource("/o7Q40Cn.png")); 
+			fondo = ImageIO.read(TableroTetris.class.getResource("/fondo.png")); 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -115,6 +116,7 @@ public class TableroTetris extends JPanel implements KeyListener {
 	public void paint (Graphics g) {
 		super.paint(g); 
 		
+		g.drawImage(fondo, 0, 0, null); 
 		
 		for(int fila = 0; fila < tableroTetris.length; fila++) {
 		    for(int col = 0; col < tableroTetris[fila].length; col++) {

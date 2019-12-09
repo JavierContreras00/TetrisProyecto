@@ -69,7 +69,7 @@ public class FormaTetris {
 		x += deltaX; 
 	}
 
-	if (!(y +1 + cor.length > 18)) {
+	if (!(y +1 + cor.length > 20)) {
 		
 		// Colision Vertical
 		
