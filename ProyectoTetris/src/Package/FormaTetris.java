@@ -12,15 +12,18 @@ public class FormaTetris {
 	public int deltaX = 0; 
 	private int x, y; 
 	
+	private int color; 
+	
 	private boolean colision = false, ejeX = false; 
 	
 	private int nVelocidad = 600, bVelocidad = 100, velocidadActual; 
 	private long tiempo, uTiempo; 
 	
-	public FormaTetris(BufferedImage bloques, int [][] cor, TableroTetris tablero) {
+	public FormaTetris(BufferedImage bloques, int [][] cor, TableroTetris tablero, int color) {
 		this.bloques = bloques; 
 		this.cor = cor; 
 		this.tablero = tablero; 
+		this.color = color; 
 		
 		velocidadActual = nVelocidad; 
 		tiempo = 0; 
@@ -44,8 +47,9 @@ public class FormaTetris {
 			for(int fila = 0; fila < cor.length; fila++)
 			    for(int col = 0; col < cor[fila].length; col++)
 			    	if(cor[fila][col] != 0)
-			    		tablero.getTablero() [y + fila][x + col] = 1; 
+			    		tablero.getTablero() [y + fila][x + col] = color; 
 			
+			Linea(); 
 			tablero.siguienteForma();
 		}
 		
@@ -101,7 +105,38 @@ public class FormaTetris {
 							fila * tablero.getTamanyoBloque() + y*tablero.getTamanyoBloque(), null); 
 	}
 	
+	// Borrar filas completas por bloques
+	
+	private void Linea() {
+		int altura = tablero.getTablero().length - 1; 
+		
+		for (int i = altura; i > 0; i--) {
+			
+			int conteo = 0; 
+			
+			for (int j = 0; j < tablero.getTablero()[0].length; j++) {
+				
+				if(tablero.getTablero()[i][j] !=0)
+					conteo++; 
+				
+				tablero.getTablero()[altura][j] = tablero.getTablero()[i][j]; 
+	
+			}
+			
+			if (conteo < tablero.getTablero()[0].length)
+				altura--;
+		}
+	}
+		
+	
 	public void rotar() {
+		
+		
+		// Para que no se quede flotando una pieza si la 
+		//estas rotando y esta llegando al final del tablero
+		
+		if(colision)
+			return; 
 		
 		int [][] rotarMatriz = null; 
 		
@@ -111,6 +146,17 @@ public class FormaTetris {
 		
 		if(x + rotarMatriz[0].length > 10 || y + rotarMatriz.length > 20 )
 		  return; 
+		
+		
+		//Para que no se super-pongan las piezas
+		
+		for (int fila = 0; fila < rotarMatriz.length; fila++) {
+			for(int col = 0; col < rotarMatriz[0].length; col++) {
+				if(tablero.getTablero()[y + fila][x + col] != 0) {
+					return; 
+				}
+			}
+		}
 		
 		cor = rotarMatriz; 
 		
@@ -158,6 +204,10 @@ public class FormaTetris {
 
 	public int[][] getCor() {
 		return cor;
+	}
+	
+	public int getColor() {
+		return color;
 	}
 	
 }

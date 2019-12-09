@@ -52,21 +52,28 @@ public class ventanaPrincipal extends JFrame {
 		JButton btnJugar = new JButton("Jugar");
 		btnJugar.setBounds(88, 44, 108, 21);
 		absPane.add(btnJugar);
-		
-		///------------------------------------------------------------------------------------------------------
+		btnJugar.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				
+				ventanaTetris v = new ventanaTetris(); 
+				ventanaPrincipal.this.dispose();
+					
+			}
+		});
 		
 		JButton btnPuntuacion = new JButton("Puntuacion");
 		btnPuntuacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				///...
+				ventanaPuntuacion o = new ventanaPuntuacion(); 
+				o.setVisible(true);
+				ventanaPrincipal.this.dispose();
 				
 			}
 		});
 		btnPuntuacion.setBounds(88, 75, 108, 21);
 		absPane.add(btnPuntuacion);
-		
-		///------------------------------------------------------------------------------------------------------------
 		
 		JButton btnOpciones = new JButton("Opciones");
 		btnOpciones.addActionListener(new ActionListener() {
@@ -81,8 +88,6 @@ public class ventanaPrincipal extends JFrame {
 		btnOpciones.setBounds(88, 106, 108, 21);
 		absPane.add(btnOpciones);
 		
-		///--------------------------------------------------------------------------------------------------------------
-		
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.setBounds(88, 165, 108, 21);
 		absPane.add(btnSalir);
@@ -93,16 +98,11 @@ public class ventanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);	
 			}
-		}
-				);
-		
-		///-----------------------------------------------------------------------------------------------------------------
+		}); 
 		
 		JLabel lblTetrisdeusto = new JLabel(" TetrisDeusto");
 		lblTetrisdeusto.setBounds(100, 10, 76, 13);
 		absPane.add(lblTetrisdeusto);
-		
-		///-----------------------------------------------------------------------------------------------------------------
 		
 		JButton btnAyuda = new JButton("Ayuda");
 		btnAyuda.setBounds(88, 137, 108, 21);
