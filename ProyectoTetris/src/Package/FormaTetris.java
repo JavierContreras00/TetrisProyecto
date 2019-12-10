@@ -51,6 +51,7 @@ public class FormaTetris {
 			
 			Linea(); 
 			tablero.siguienteForma();
+			tablero.addScore();
 		}
 		
 		//Limites laterales del tetris

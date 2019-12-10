@@ -1,5 +1,8 @@
 package Package;
 
+import java.awt.BasicStroke; 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +11,8 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.swing.Timer;
+
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -28,6 +33,8 @@ public class TableroTetris extends JPanel implements KeyListener {
     private final int delay = 1000/FPS; 
     
     private boolean Final = false; 
+    
+    private int score = 0; 
 	
 	public TableroTetris() {
 		
@@ -126,6 +133,13 @@ public class TableroTetris extends JPanel implements KeyListener {
 		    }
 		}
 		
+		g.setColor(Color.GRAY);	
+	
+	    g.setFont(new Font("Georgia", Font.BOLD, 30));
+		    
+	    g.drawString("SCORE", TableroTetris.WIDTH + 310, TableroTetris.HEIGHT + 300);
+		g.drawString(score+"", TableroTetris.WIDTH + 310, TableroTetris.HEIGHT/2 + 330);
+		
 		//Crear tablero.
 		
 		//Lineas Horizontales
@@ -137,6 +151,7 @@ public class TableroTetris extends JPanel implements KeyListener {
 		for (int j = 0; j <= tableroAncho; j++) {
 			g.drawLine(j*bloquesTamanyo, 0 , j*bloquesTamanyo, tableroAlto*bloquesTamanyo);
 		}
+		
 		
 		formaActual.reproducir(g);
 	
@@ -198,6 +213,22 @@ public class TableroTetris extends JPanel implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_DOWN)
 			formaActual.nVelocidad();
+	}
+	
+	public void stopGame(){
+		score = 0;
 		
+		for(int fila = 0; fila < tableroTetris.length; fila++)
+		{
+			for(int col = 0; col < tableroTetris[fila].length; col ++)
+			{
+				tableroTetris[fila][col] = 0;
+			}
+		}
+		tiempo.stop();
+	}
+	
+	public void addScore() {
+		score++; 
 	}
 }
