@@ -135,10 +135,14 @@ public class TableroTetris extends JPanel implements KeyListener {
 		
 		g.setColor(Color.GRAY);	
 	
-	    g.setFont(new Font("Georgia", Font.BOLD, 30));
+	    g.setFont(new Font("Georgia", Font.BOLD, 20));
 		    
 	    g.drawString("SCORE", TableroTetris.WIDTH + 310, TableroTetris.HEIGHT + 300);
 		g.drawString(score+"", TableroTetris.WIDTH + 310, TableroTetris.HEIGHT/2 + 330);
+		
+		g.drawString("RESET", TableroTetris.WIDTH + 310, TableroTetris.HEIGHT + 480);
+		g.drawString("PAUSA", TableroTetris.WIDTH + 310, TableroTetris.HEIGHT + 380);
+		g.drawString("PIEZA", TableroTetris.WIDTH + 310, TableroTetris.HEIGHT + 50);
 		
 		//Crear tablero.
 		
