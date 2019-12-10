@@ -21,6 +21,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
+import java.awt.Panel;
+import java.awt.Color;
+import java.awt.Font;
 
 public class VentanaLogIn extends JFrame {
 
@@ -61,24 +64,24 @@ public class VentanaLogIn extends JFrame {
 		contentPane.setLayout(null);
 
 		tfUsuario = new JTextField();
-		tfUsuario.setBounds(148, 128, 116, 22);
+		tfUsuario.setBounds(148, 140, 116, 22);
 		contentPane.add(tfUsuario);
 		tfUsuario.setColumns(10);
 
 		tfContrasenia = new JTextField();
-		tfContrasenia.setBounds(148, 187, 116, 22);
+		tfContrasenia.setBounds(148, 169, 116, 22);
 		contentPane.add(tfContrasenia);
 		tfContrasenia.setColumns(10);
 
 		JLabel lblNombreusuario = new JLabel("Nombre de usuario");
-		lblNombreusuario.setBounds(12, 131, 124, 16);
+		lblNombreusuario.setBounds(12, 143, 124, 16);
 		contentPane.add(lblNombreusuario);
 
-		JLabel lblContrasea = new JLabel("Contraseña: ");
-		lblContrasea.setBounds(12, 190, 108, 16);
+		JLabel lblContrasea = new JLabel("Contrasenia: ");
+		lblContrasea.setBounds(33, 172, 108, 16);
 		contentPane.add(lblContrasea);
 
-		JButton btnIniciarSesin = new JButton("Iniciar sesión");
+		JButton btnIniciarSesin = new JButton("Iniciar sesion");
 		btnIniciarSesin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -97,7 +100,7 @@ public class VentanaLogIn extends JFrame {
 							System.out.println("iniciar sesion");
 							
 						} else {
-							System.out.println("contraseña incorrecta");
+							System.out.println("contrasena incorrecta");
 						}
 
 					}
@@ -108,8 +111,41 @@ public class VentanaLogIn extends JFrame {
 
 			}
 		});
-		btnIniciarSesin.setBounds(292, 143, 108, 25);
+		btnIniciarSesin.setBounds(290, 137, 130, 25);
 		contentPane.add(btnIniciarSesin);
+		
+		JButton btnRegistrarse = new JButton("Registrarse");
+		btnRegistrarse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				registro2 re = new registro2();
+			}   
+		});
+		btnRegistrarse.setBounds(290, 168, 130, 25);
+		contentPane.add(btnRegistrarse);
+		
+		Panel panel_1 = new Panel();
+		panel_1.setBackground(Color.YELLOW);
+		panel_1.setForeground(Color.LIGHT_GRAY);
+		panel_1.setBounds(148, 0, 116, 51);
+		contentPane.add(panel_1);
+		
+		JLabel lblLogIn = new JLabel("LOG IN");
+		lblLogIn.setFont(new Font("Tahoma", Font.BOLD, 17));
+		panel_1.add(lblLogIn);
+		
+		Panel panel = new Panel();
+		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBounds(0, 0, 432, 51);
+		contentPane.add(panel);
+		
+		JButton btnJuegaSinRegistrarte = new JButton("Juega sin registrarte aqui");
+		btnJuegaSinRegistrarte.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventanaTetris gfds = new ventanaTetris();
+			}
+		});
+		btnJuegaSinRegistrarte.setBounds(148, 215, 189, 25);
+		contentPane.add(btnJuegaSinRegistrarte);
 
 		this.addWindowListener(new WindowAdapter() {
 
@@ -128,5 +164,4 @@ public class VentanaLogIn extends JFrame {
 		});
 
 	}
-
 }

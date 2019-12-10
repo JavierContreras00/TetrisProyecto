@@ -5,8 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-import login_ragister_design.My_CNX;
-import login_ragister_design.Register_Form;
+
 
 import java.awt.BorderLayout;
 import javax.swing.JPasswordField;
@@ -26,12 +25,14 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Panel;
+import java.awt.Color;
 
 public class registro2 {
 
 	protected static final Statement My_CNX = null;
 	private JFrame frame;
-	private JPasswordField passwordField_2;
 	private JTextField textField_Usuario;
 	private JTextField textField_email;
 	private JTextField textField_Nombre;
@@ -70,59 +71,64 @@ public class registro2 {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		passwordField_2 = new JPasswordField();
-		passwordField_2.setBounds(230, 224, 105, 22);
-		frame.getContentPane().add(passwordField_2);
-		
-		JLabel lblUsuario = new JLabel("Usuario");
-		lblUsuario.setBounds(94, 115, 56, 16);
+		JLabel lblUsuario = new JLabel("Usuario:");
+		lblUsuario.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblUsuario.setBounds(94, 166, 56, 16);
 		frame.getContentPane().add(lblUsuario);
 		
 		textField_Usuario = new JTextField();
-		textField_Usuario.setBounds(193, 112, 116, 22);
+		textField_Usuario.setBounds(193, 163, 116, 22);
 		frame.getContentPane().add(textField_Usuario);
 		textField_Usuario.setColumns(10);
 		
-		JLabel lblFecha = new JLabel("Fecha");
-		lblFecha.setBounds(94, 288, 56, 16);
+		JLabel lblFecha = new JLabel("Fecha:");
+		lblFecha.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblFecha.setBounds(94, 262, 56, 16);
 		frame.getContentPane().add(lblFecha);
 		
 		JComboBox comboBox_dia = new JComboBox();
-		comboBox_dia.setBounds(193, 285, 31, 22);
+		comboBox_dia.setEditable(true);
+		comboBox_dia.setSelectedIndex(1);
+		comboBox_dia.setBounds(193, 262, 31, 22);
 		frame.getContentPane().add(comboBox_dia);
 		
 		JComboBox comboBox_mes = new JComboBox();
-		comboBox_mes.setBounds(236, 285, 31, 22);
+		comboBox_mes.setEditable(true);
+		comboBox_mes.setBounds(236, 262, 31, 22);
 		frame.getContentPane().add(comboBox_mes);
 		
 		JComboBox comboBox_anio = new JComboBox();
-		comboBox_anio.setBounds(278, 285, 31, 22);
+		comboBox_anio.setEditable(true);
+		comboBox_anio.setBounds(278, 262, 31, 22);
 		frame.getContentPane().add(comboBox_anio);
 		
-		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setBounds(94, 259, 56, 16);
+		JLabel lblEmail = new JLabel("Email:");
+		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblEmail.setBounds(94, 230, 56, 16);
 		frame.getContentPane().add(lblEmail);
 		
 		textField_email = new JTextField();
-		textField_email.setBounds(193, 250, 116, 22);
+		textField_email.setBounds(193, 233, 116, 22);
 		frame.getContentPane().add(textField_email);
 		textField_email.setColumns(10);
 		
-		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(94, 48, 56, 16);
+		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNombre.setBounds(94, 96, 56, 16);
 		frame.getContentPane().add(lblNombre);
 		
-		JLabel lblApellido = new JLabel("Apellido");
-		lblApellido.setBounds(94, 83, 56, 16);
+		JLabel lblApellido = new JLabel("Apellido:");
+		lblApellido.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblApellido.setBounds(94, 131, 56, 16);
 		frame.getContentPane().add(lblApellido);
 		
 		textField_Nombre = new JTextField();
-		textField_Nombre.setBounds(193, 45, 116, 22);
+		textField_Nombre.setBounds(193, 93, 116, 22);
 		frame.getContentPane().add(textField_Nombre);
 		textField_Nombre.setColumns(10);
 		
 		textField_Apelido = new JTextField();
-		textField_Apelido.setBounds(193, 80, 116, 22);
+		textField_Apelido.setBounds(193, 128, 116, 22);
 		frame.getContentPane().add(textField_Apelido);
 		textField_Apelido.setColumns(10);
 		
@@ -139,41 +145,33 @@ public class registro2 {
 				 String fapellido = textField_Apelido.getText();
 		         String username = textField_Usuario.getText();
 		         String pass1 = String.valueOf(passwordField_1.getPassword());
-		         String pass2 = String.valueOf(passwordField_2.getPassword());
 		         
 		        
 		        
-		         if(verifyFields())
+		         if(verifica())
 		         {
-		             if(!checkUsername(username))
+		             if(!comprobarUsuario(username))
 		             {
 		                 PreparedStatement ps;
 		                 ResultSet rs;
-		                 String registerUserQuery = "INSERT INTO `users`(`full_name`, `username`, `password`, `phone`, `gender`, `picture`) VALUES (?,?,?,?,?,?)";
+		                 String registerUserQuery = "INSERT INTO `users`(`idUsuario`, `nombreUsuario`, `email`, `nombre`, `apellido`, `fechaNac`, `contrasenia`) VALUES (?,?,?,?,?,?,?)";
 		                 
 		                 try {
 		                     
 		                     ps = My_CNX.getConnection().prepareStatement(registerUserQuery);
 		                     ps.setString(1, fname);
-		                     ps.setString(2, fapellido);
-		                     ps.setString(3, username);
-		                     ps.setString(4, pass1);
-		                     ps.setString(5, pass2);
+		                     ps.setString(2, fname);
+		                     ps.setString(3, fapellido);
+		                     ps.setString(4, username);
+		                     ps.setString(5, pass1);
+		                     ps.setString(6, pass1);
+
 		                     
-		                     
-		                     try {
-		                         
-		              
-		                         
-		                         if(ps.executeUpdate() != 0){
-		                             JOptionPane.showMessageDialog(null, "Your Account Has Been Created");
-		                         }else{
-		                             JOptionPane.showMessageDialog(null, "Error: Check Your Information");
-		                         }
-		                         
-		                     } catch (FileNotFoundException ex) {
-		                         Logger.getLogger(registro2.class.getName()).log(Level.SEVERE, null, ex);
-		                     }
+		                     if(ps.executeUpdate() != 0){
+							     JOptionPane.showMessageDialog(null, "Tu cuenta se ha creado");
+							 }else{
+							     JOptionPane.showMessageDialog(null, "Error al crear la cuenta");
+							 }
 		                     
 		                 } catch (SQLException ex) {
 		                     Logger.getLogger(registro2.class.getName()).log(Level.SEVERE, null, ex);
@@ -183,29 +181,83 @@ public class registro2 {
 		         }
 				
 			}
+			
+			 public boolean verifica()
+			    {
+				 String fname = textField_Nombre.getText();
+				 String fapellido = textField_Apelido.getText();
+		         String username = textField_Usuario.getText();
+		         String pass1 = String.valueOf(passwordField_1.getPassword());
+		         
+			        
+			        if(fname.trim().equals("") || fapellido.trim().equals("") || username.trim().equals("")
+			           || pass1.trim().equals("") )
+			        {
+			            JOptionPane.showMessageDialog(null, "Uno o mas campos estan vacios",null, 2);
+			            return false;
+			        }
+			        else{
+			            return true;
+			        }
+			    }
+			    
+			    
+			    public boolean comprobarUsuario(String username){
+			        
+			        PreparedStatement st;
+			        ResultSet rs;
+			        boolean username_exist = false;
+			        
+			        String query = "SELECT * FROM `usuario` WHERE `nombreUsuario` = ?";
+			        
+			        try {
+			            
+			            st = My_CNX.getConnection().prepareStatement(query);
+			            st.setString(1, username);
+			            rs = st.executeQuery();
+			        
+			            if(rs.next())
+			            {
+			                username_exist = true;
+			                JOptionPane.showMessageDialog(null, "Ya existe este usuario, por favor elige otro", "Fallo de usuario", 2);
+			            }
+			            
+			        } catch (SQLException ex) {
+			            Logger.getLogger(registro2.class.getName()).log(Level.SEVERE, null, ex);
+			        }        
+			        return username_exist;
+			    }
 		});
-		btnRegistrarse.setBounds(332, 284, 97, 25);
+		
+		
+		
+		
+		
+		
+		btnRegistrarse.setBounds(334, 258, 97, 25);
 		frame.getContentPane().add(btnRegistrarse);
 		
-		JLabel lblConfirmarContrasena = new JLabel("Confirmar contrasena");
-		lblConfirmarContrasena.setBounds(94, 224, 124, 22);
-		frame.getContentPane().add(lblConfirmarContrasena);
-		
-		JLabel lblContrasena = new JLabel("Contrasena");
-		lblContrasena.setBounds(94, 195, 90, 16);
+		JLabel lblContrasena = new JLabel("Contrasena:");
+		lblContrasena.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblContrasena.setBounds(94, 201, 90, 16);
 		frame.getContentPane().add(lblContrasena);
 		
 		passwordField_1 = new JPasswordField();
-		passwordField_1.setBounds(212, 192, 90, 22);
+		passwordField_1.setBounds(193, 198, 116, 22);
 		frame.getContentPane().add(passwordField_1);
 		
-		JButton btnX = new JButton("X");
-		btnX.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		btnX.setBounds(437, 13, 41, 25);
-		frame.getContentPane().add(btnX);
+		Panel panel = new Panel();
+		panel.setBackground(Color.YELLOW);
+		panel.setBounds(167, 0, 116, 51);
+		frame.getContentPane().add(panel);
+		
+		JLabel lblRegistro = new JLabel("REGISTRO");
+		lblRegistro.setFont(new Font("Tahoma", Font.BOLD, 17));
+		panel.add(lblRegistro);
+		
+		Panel panel_1 = new Panel();
+		panel_1.setBackground(Color.GRAY);
+		panel_1.setBounds(0, 0, 490, 51);
+		frame.getContentPane().add(panel_1);
 	}
 }
