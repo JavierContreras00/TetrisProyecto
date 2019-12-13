@@ -145,7 +145,9 @@ public class registro2 {
 				 String fapellido = textField_Apelido.getText();
 		         String username = textField_Usuario.getText();
 		         String pass1 = String.valueOf(passwordField_1.getPassword());
+		         String email = textField_email.getText();
 		         
+
 		        
 		        
 		         if(verifica())
@@ -159,12 +161,14 @@ public class registro2 {
 		                 try {
 		                     
 		                     ps = My_CNX.getConnection().prepareStatement(registerUserQuery);
-		                     ps.setString(1, fname);
+		                     ps.setString(1, id);
 		                     ps.setString(2, fname);
 		                     ps.setString(3, fapellido);
 		                     ps.setString(4, username);
 		                     ps.setString(5, pass1);
-		                     ps.setString(6, pass1);
+		                     ps.setString(6, fname);
+		                     ps.setString(7, email);
+
 
 		                     
 		                     if(ps.executeUpdate() != 0){

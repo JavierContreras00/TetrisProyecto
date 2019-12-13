@@ -18,6 +18,7 @@ import java.awt.Color;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
+import java.awt.Panel;
 
 public class ventanaOpciones extends JFrame {
 
@@ -51,44 +52,40 @@ public class ventanaOpciones extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("OPCIONES");
-		lblNewLabel.setBounds(146, 10, 64, 13);
-		contentPane.add(lblNewLabel);
-		
 		JLabel lblRotarDerecha = new JLabel("Rotar Derecha");
-		lblRotarDerecha.setBounds(10, 50, 93, 13);
+		lblRotarDerecha.setBounds(12, 123, 93, 13);
 		contentPane.add(lblRotarDerecha);
 		
 		JLabel lblRotarIzquierda = new JLabel("Rotar Izquierda");
-		lblRotarIzquierda.setBounds(10, 73, 93, 13);
+		lblRotarIzquierda.setBounds(12, 146, 93, 13);
 		contentPane.add(lblRotarIzquierda);
 		
 		JLabel lblMoverDerecha = new JLabel("Mover Derecha");
-		lblMoverDerecha.setBounds(10, 96, 93, 13);
+		lblMoverDerecha.setBounds(12, 169, 93, 13);
 		contentPane.add(lblMoverDerecha);
 		
 		JLabel lblMoverIzquierda = new JLabel("Mover Izquierda");
-		lblMoverIzquierda.setBounds(10, 119, 93, 13);
+		lblMoverIzquierda.setBounds(12, 192, 93, 13);
 		contentPane.add(lblMoverIzquierda);
 		
 		JLabel lblBajarSuave = new JLabel("Bajar Suave");
-		lblBajarSuave.setBounds(10, 142, 93, 13);
+		lblBajarSuave.setBounds(12, 215, 93, 13);
 		contentPane.add(lblBajarSuave);
 		
 		JLabel lblBajarDeGolpe = new JLabel("Bajar de Golpe");
-		lblBajarDeGolpe.setBounds(10, 165, 93, 13);
+		lblBajarDeGolpe.setBounds(12, 238, 93, 13);
 		contentPane.add(lblBajarDeGolpe);
 		
 		JLabel lblEnsearLaPieza = new JLabel("Ense\u00F1ar la Pieza Fantasma");
-		lblEnsearLaPieza.setBounds(10, 211, 168, 13);
+		lblEnsearLaPieza.setBounds(12, 284, 168, 13);
 		contentPane.add(lblEnsearLaPieza);
 		
 		JLabel lblMusica = new JLabel("Musica");
-		lblMusica.setBounds(10, 256, 46, 13);
+		lblMusica.setBounds(12, 329, 46, 13);
 		contentPane.add(lblMusica);
 		
-		JButton btnSalir = new JButton("Salir");
-		btnSalir.setBounds(117, 355, 111, 21);
+		JButton btnSalir = new JButton("Atras");
+		btnSalir.setBounds(117, 375, 111, 21);
 		contentPane.add(btnSalir);
 		btnSalir.addActionListener(new ActionListener() {
 
@@ -104,45 +101,52 @@ public class ventanaOpciones extends JFrame {
 		
 		JPanel panelRotarDerecha = new JPanel();
 		panelRotarDerecha.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panelRotarDerecha.setBounds(222, 50, 119, 13);
+		panelRotarDerecha.setBounds(224, 123, 119, 13);
 		contentPane.add(panelRotarDerecha);
-		
-		JButton btnRderecha = new JButton("rDERECHA");
-		panelRotarDerecha.add(btnRderecha);
 		
 		JPanel panelRotarIzquierda = new JPanel();
 		panelRotarIzquierda.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panelRotarIzquierda.setBounds(222, 73, 119, 13);
+		panelRotarIzquierda.setBounds(224, 146, 119, 13);
 		contentPane.add(panelRotarIzquierda);
 		
 		JPanel panelMoverDerecha = new JPanel();
 		panelMoverDerecha.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panelMoverDerecha.setBounds(222, 96, 119, 13);
+		panelMoverDerecha.setBounds(224, 169, 119, 13);
 		contentPane.add(panelMoverDerecha);
 		
 		JPanel panelMoverIzquierda = new JPanel();
 		panelMoverIzquierda.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panelMoverIzquierda.setBounds(222, 119, 119, 13);
+		panelMoverIzquierda.setBounds(224, 192, 119, 13);
 		contentPane.add(panelMoverIzquierda);
 		
 		JPanel panelBajarSuave = new JPanel();
 		panelBajarSuave.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panelBajarSuave.setBounds(222, 142, 119, 13);
+		panelBajarSuave.setBounds(224, 215, 119, 13);
 		contentPane.add(panelBajarSuave);
 		
 		JPanel panelBajarDeGolpe = new JPanel();
 		panelBajarDeGolpe.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panelBajarDeGolpe.setBounds(222, 165, 119, 13);
+		panelBajarDeGolpe.setBounds(224, 238, 119, 13);
 		contentPane.add(panelBajarDeGolpe);
 		
 		JPanel panelPiezaFantasma = new JPanel();
 		panelPiezaFantasma.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panelPiezaFantasma.setBounds(222, 211, 119, 13);
+		panelPiezaFantasma.setBounds(224, 284, 119, 13);
 		contentPane.add(panelPiezaFantasma);
 		
 		JPanel panelMusica = new JPanel();
 		panelMusica.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panelMusica.setBounds(222, 256, 119, 13);
+		panelMusica.setBounds(224, 329, 119, 13);
 		contentPane.add(panelMusica);
+		
+		Panel panel_1 = new Panel();
+		panel_1.setBackground(Color.LIGHT_GRAY);
+		panel_1.setBounds(0, 0, 347, 61);
+		contentPane.add(panel_1);
+		
+		Panel panel = new Panel();
+		panel_1.add(panel);
+		panel.setBackground(Color.YELLOW);
+		panel.setLayout(null);
 	}
 }

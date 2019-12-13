@@ -64,21 +64,21 @@ public class VentanaLogIn extends JFrame {
 		contentPane.setLayout(null);
 
 		tfUsuario = new JTextField();
-		tfUsuario.setBounds(148, 140, 116, 22);
+		tfUsuario.setBounds(148, 92, 116, 22);
 		contentPane.add(tfUsuario);
 		tfUsuario.setColumns(10);
 
 		tfContrasenia = new JTextField();
-		tfContrasenia.setBounds(148, 169, 116, 22);
+		tfContrasenia.setBounds(148, 121, 116, 22);
 		contentPane.add(tfContrasenia);
 		tfContrasenia.setColumns(10);
 
 		JLabel lblNombreusuario = new JLabel("Nombre de usuario");
-		lblNombreusuario.setBounds(12, 143, 124, 16);
+		lblNombreusuario.setBounds(12, 95, 124, 16);
 		contentPane.add(lblNombreusuario);
 
 		JLabel lblContrasea = new JLabel("Contrasenia: ");
-		lblContrasea.setBounds(33, 172, 108, 16);
+		lblContrasea.setBounds(33, 124, 108, 16);
 		contentPane.add(lblContrasea);
 
 		JButton btnIniciarSesin = new JButton("Iniciar sesion");
@@ -111,16 +111,16 @@ public class VentanaLogIn extends JFrame {
 
 			}
 		});
-		btnIniciarSesin.setBounds(290, 137, 130, 25);
+		btnIniciarSesin.setBounds(290, 89, 130, 25);
 		contentPane.add(btnIniciarSesin);
 		
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				registro2 re = new registro2();
+				registro2.main(null);
 			}   
 		});
-		btnRegistrarse.setBounds(290, 168, 130, 25);
+		btnRegistrarse.setBounds(290, 120, 130, 25);
 		contentPane.add(btnRegistrarse);
 		
 		Panel panel_1 = new Panel();
@@ -141,10 +141,10 @@ public class VentanaLogIn extends JFrame {
 		JButton btnJuegaSinRegistrarte = new JButton("Juega sin registrarte aqui");
 		btnJuegaSinRegistrarte.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ventanaTetris gfds = new ventanaTetris();
+				ventanaPrincipal.main(null);
 			}
 		});
-		btnJuegaSinRegistrarte.setBounds(148, 215, 189, 25);
+		btnJuegaSinRegistrarte.setBounds(148, 167, 189, 25);
 		contentPane.add(btnJuegaSinRegistrarte);
 
 		this.addWindowListener(new WindowAdapter() {

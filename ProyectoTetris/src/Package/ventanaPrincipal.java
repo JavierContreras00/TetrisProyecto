@@ -13,6 +13,9 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import java.awt.Panel;
+import java.awt.Color;
+import java.awt.Font;
 
 public class ventanaPrincipal extends JFrame {
 
@@ -42,7 +45,7 @@ public class ventanaPrincipal extends JFrame {
 	public ventanaPrincipal() {
 		setTitle("VentanaPrincipal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 300, 235);
+		setBounds(100, 100, 438, 426);
 		absPane = new JPanel();
 		absPane.setToolTipText("");
 		absPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -50,7 +53,7 @@ public class ventanaPrincipal extends JFrame {
 		absPane.setLayout(null);
 		
 		JButton btnJugar = new JButton("Jugar");
-		btnJugar.setBounds(88, 44, 108, 21);
+		btnJugar.setBounds(150, 100, 108, 21);
 		absPane.add(btnJugar);
 		btnJugar.addActionListener(new ActionListener() {
 
@@ -72,7 +75,7 @@ public class ventanaPrincipal extends JFrame {
 				
 			}
 		});
-		btnPuntuacion.setBounds(88, 75, 108, 21);
+		btnPuntuacion.setBounds(150, 134, 108, 21);
 		absPane.add(btnPuntuacion);
 		
 		JButton btnOpciones = new JButton("Opciones");
@@ -85,11 +88,11 @@ public class ventanaPrincipal extends JFrame {
 			}
 		});
 		
-		btnOpciones.setBounds(88, 106, 108, 21);
+		btnOpciones.setBounds(150, 168, 108, 21);
 		absPane.add(btnOpciones);
 		
 		JButton btnSalir = new JButton("Salir");
-		btnSalir.setBounds(88, 165, 108, 21);
+		btnSalir.setBounds(150, 236, 108, 21);
 		absPane.add(btnSalir);
 		
 		btnSalir.addActionListener(new ActionListener() {
@@ -98,15 +101,25 @@ public class ventanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);	
 			}
-		}); 
-		
-		JLabel lblTetrisdeusto = new JLabel(" TetrisDeusto");
-		lblTetrisdeusto.setBounds(100, 10, 76, 13);
-		absPane.add(lblTetrisdeusto);
+		});
 		
 		JButton btnAyuda = new JButton("Ayuda");
-		btnAyuda.setBounds(88, 137, 108, 21);
+		btnAyuda.setBounds(150, 202, 108, 21);
 		absPane.add(btnAyuda);
+		
+		Panel panel = new Panel();
+		panel.setBackground(Color.YELLOW);
+		panel.setBounds(136, 0, 156, 51);
+		absPane.add(panel);
+		
+		JLabel lblMenu = new JLabel("MENU");
+		lblMenu.setFont(new Font("Tahoma", Font.BOLD, 17));
+		panel.add(lblMenu);
+		
+		Panel panel_1 = new Panel();
+		panel_1.setBackground(Color.GRAY);
+		panel_1.setBounds(0, 0, 420, 51);
+		absPane.add(panel_1);
 		btnAyuda.addActionListener(new ActionListener() {
 
 			@Override
@@ -119,5 +132,4 @@ public class ventanaPrincipal extends JFrame {
 		});
 		
 	}
-	
 }
