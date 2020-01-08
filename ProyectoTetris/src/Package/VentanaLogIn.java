@@ -117,7 +117,7 @@ public class VentanaLogIn extends JFrame {
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				registro2.main(null);
+					Registro.main(null);
 			}   
 		});
 		btnRegistrarse.setBounds(290, 120, 130, 25);
