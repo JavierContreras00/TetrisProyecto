@@ -20,6 +20,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentListener;
 import java.awt.event.MouseWheelListener;
+import java.sql.Connection;
 import java.awt.Dialog.ModalExclusionType;
 import javax.swing.JButton;
 import javax.swing.ScrollPaneConstants;
@@ -32,11 +33,11 @@ public class ventanaAyuda extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(Connection con, Usuario u ) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ventanaAyuda frame = new ventanaAyuda();
+					ventanaAyuda frame = new ventanaAyuda(con, u);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +50,7 @@ public class ventanaAyuda extends JFrame {
 	 * Create the frame.
 	 */
 	
-	public ventanaAyuda() {
+	public ventanaAyuda(Connection con, Usuario u) {
 		setBackground(Color.WHITE);
 		getContentPane().setBackground(Color.WHITE);
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
@@ -80,7 +81,7 @@ public class ventanaAyuda extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ventanaPrincipal p = new ventanaPrincipal(); 
+				ventanaPrincipal p = new ventanaPrincipal(con, u); 
 				p.setVisible(true);
 				ventanaAyuda.this.dispose();
 			}

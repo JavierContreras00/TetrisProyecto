@@ -5,6 +5,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Connection;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -16,12 +17,12 @@ public class ventanaTetris {
 	private TableroTetris tablero; 
 
 	
-	public static void main(String[] args) {
-		new ventanaTetris(); 
+	public static void main(Connection con, Usuario u) {
+		new ventanaTetris(con, u); 
 	}
 
 	
-	public ventanaTetris() {
+	public ventanaTetris(Connection con, Usuario u) {
 	  ventanaTetris =new JFrame("Tetris Juego"); 
 	  ventanaTetris.setSize(ancho, alto);
 	  ventanaTetris.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -180,6 +180,7 @@ public class TableroTetris extends JPanel implements KeyListener {
 		    			Final = true; 
 		    		
 		    		System.out.println("GAME OVER");
+		    		score = score + 1;
 		    		}
 		    	}
 		

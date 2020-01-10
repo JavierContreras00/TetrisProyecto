@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -27,11 +28,11 @@ public class ventanaOpciones extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(Connection con, Usuario u) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ventanaOpciones frame = new ventanaOpciones();
+					ventanaOpciones frame = new ventanaOpciones(con, u);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +44,7 @@ public class ventanaOpciones extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ventanaOpciones() {
+	public ventanaOpciones(Connection con, Usuario u) {
 		setTitle("Opciones");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 365, 456);
@@ -91,7 +92,7 @@ public class ventanaOpciones extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ventanaPrincipal p = new ventanaPrincipal(); 
+				ventanaPrincipal p = new ventanaPrincipal(con, u); 
 				p.setVisible(true);
 				ventanaOpciones.this.dispose();
 				

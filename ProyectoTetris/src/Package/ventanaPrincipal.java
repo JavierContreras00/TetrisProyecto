@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -25,11 +26,11 @@ public class ventanaPrincipal extends JFrame {
 	 * Launch the application.
 	 */
 	
-	public static void main(String[] args) {
+	public static void main(Connection con, Usuario u) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ventanaPrincipal frame = new ventanaPrincipal();
+					ventanaPrincipal frame = new ventanaPrincipal(con, u);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +43,7 @@ public class ventanaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	
-	public ventanaPrincipal() {
+	public ventanaPrincipal(Connection con, Usuario u) {
 		setTitle("VentanaPrincipal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 438, 426);
@@ -59,7 +60,7 @@ public class ventanaPrincipal extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 				
-				ventanaTetris v = new ventanaTetris(); 
+				ventanaTetris.main(con, u);
 				ventanaPrincipal.this.dispose();
 					
 			}
@@ -68,10 +69,9 @@ public class ventanaPrincipal extends JFrame {
 		JButton btnPuntuacion = new JButton("Puntuacion");
 		btnPuntuacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				ventanaPuntuacion.main(con, u);
 				
-				ventanaPuntuacion o = new ventanaPuntuacion(); 
-				o.setVisible(true);
-				ventanaPrincipal.this.dispose();
 				
 			}
 		});
@@ -82,7 +82,7 @@ public class ventanaPrincipal extends JFrame {
 		btnOpciones.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				ventanaOpciones o = new ventanaOpciones(); 
+				ventanaOpciones o = new ventanaOpciones(con, u); 
 				o.setVisible(true);
 				ventanaPrincipal.this.dispose();
 			}
@@ -124,7 +124,7 @@ public class ventanaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ventanaAyuda a = new ventanaAyuda(); 
+				ventanaAyuda a = new ventanaAyuda(con, u); 
 				a.setVisible(true);
 				ventanaPrincipal.this.dispose();
 			}

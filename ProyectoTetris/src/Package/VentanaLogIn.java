@@ -30,7 +30,7 @@ public class VentanaLogIn extends JFrame {
 	private JPanel contentPane;
 	private JTextField tfUsuario;
 	private JTextField tfContrasenia;
-
+	private Connection con = BD.initBD();
 	/**
 	 * Launch the application.
 	 */
@@ -54,8 +54,7 @@ public class VentanaLogIn extends JFrame {
 	 * @throws SQLException
 	 */
 	public VentanaLogIn() throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tetrix", "root", "deusto");
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -97,7 +96,9 @@ public class VentanaLogIn extends JFrame {
 					while (rs.next()) {
 						String contraseniaBaseDatos = rs.getString("contrasenia");
 						if (contrasenia.equals(contraseniaBaseDatos)) {
-							System.out.println("iniciar sesion");
+							Usuario u = BD.crearUsuario(con, tfUsuario.getText());
+							dispose();
+							ventanaPrincipal.main(con, u);
 							
 						} else {
 							System.out.println("contrasena incorrecta");
@@ -117,7 +118,8 @@ public class VentanaLogIn extends JFrame {
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					Registro.main(null);
+				dispose();
+				Registrar.main(con);
 			}   
 		});
 		btnRegistrarse.setBounds(290, 120, 130, 25);
@@ -141,7 +143,8 @@ public class VentanaLogIn extends JFrame {
 		JButton btnJuegaSinRegistrarte = new JButton("Juega sin registrarte aqui");
 		btnJuegaSinRegistrarte.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ventanaPrincipal.main(null);
+				dispose();
+				ventanaPrincipal.main(con, null);
 			}
 		});
 		btnJuegaSinRegistrarte.setBounds(148, 167, 189, 25);
