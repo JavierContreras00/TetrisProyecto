@@ -59,9 +59,9 @@ public class BD {
 
        public static Connection initBD() throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tetrix", "root", "deusto");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tetrix", "root", "deusto");
 		//Class.forName("org.sqlite.JDBC");
-		//Connection con = DriverManager.getConnection("jdbc:sqlite:C/sqlite/db/bdtetris.db");
+		//Connection con = DriverManager.getConnection("jdbc:sqlite:C/sqlite/db/bdtetris.sql");
 		return con;
 	}
 	

@@ -100,11 +100,11 @@ public class Registrar extends JFrame {
 
 
 		JLabel lblAnio = new JLabel("Anio:");
-		lblAnio.setBounds(25, 327, 56, 16);
+		lblAnio.setBounds(129, 415, 56, 16);
 		contentPane.add(lblAnio);
 
 		JLabel lblMes = new JLabel("Mes:");
-		lblMes.setBounds(25, 371, 56, 16);
+		lblMes.setBounds(73, 415, 56, 16);
 		contentPane.add(lblMes);
 
 		JLabel lblDia = new JLabel("Dia:");
@@ -112,7 +112,7 @@ public class Registrar extends JFrame {
 		contentPane.add(lblDia);
 
 		JComboBox<String> cbAnio = new JComboBox<String>();
-		cbAnio.setBounds(185, 324, 116, 22);
+		cbAnio.setBounds(185, 344, 37, 22);
 		contentPane.add(cbAnio);
 
 		int anio = 2020;
@@ -126,7 +126,7 @@ public class Registrar extends JFrame {
 		}
 
 		JComboBox<String> cbMes = new JComboBox<String>();
-		cbMes.setBounds(185, 368, 116, 22);
+		cbMes.setBounds(234, 344, 44, 22);
 		contentPane.add(cbMes);
 
 		for (int i = 1; i <= 12; i++) {
@@ -138,7 +138,7 @@ public class Registrar extends JFrame {
 		}
 
 		JComboBox<String> cbDia = new JComboBox<String>();
-		cbDia.setBounds(185, 412, 116, 22);
+		cbDia.setBounds(301, 344, 37, 22);
 		contentPane.add(cbDia);
 		for (int i = 1; i <= 31; i++) {
 			if (i < 10) {
@@ -200,8 +200,21 @@ public class Registrar extends JFrame {
 
 			}
 		});
-		btnRegistrar.setBounds(420, 411, 97, 25);
+		btnRegistrar.setBounds(301, 411, 97, 25);
 		contentPane.add(btnRegistrar);
+		
+		JLabel lblFechaDeNacimiento = new JLabel("Fecha de nacimiento");
+		lblFechaDeNacimiento.setBounds(25, 347, 130, 16);
+		contentPane.add(lblFechaDeNacimiento);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnNewButton.setBounds(410, 411, 97, 25);
+		contentPane.add(btnNewButton);
 	
 	}
 }
