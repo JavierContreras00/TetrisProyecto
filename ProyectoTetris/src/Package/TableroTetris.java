@@ -66,6 +66,9 @@ public class TableroTetris extends JPanel implements KeyListener, MouseListener,
 			e.printStackTrace();
 		}
 		
+		mouseX = 0;
+		mouseY = 0;
+		
 		stopBounds = new Rectangle(350, 500, pausa.getWidth(), pausa.getHeight() + pausa.getHeight()/2);
 		refreshBounds = new Rectangle(350, 500 - refresh.getHeight() - 20,refresh.getWidth(),
 				refresh.getHeight() + refresh.getHeight()/2);
@@ -205,7 +208,7 @@ public class TableroTetris extends JPanel implements KeyListener, MouseListener,
 			g.drawString(gameOverString, 50, TableroTetris.HEIGHT/2);
 		}	
 		
-		g.setColor(Color.GRAY);	
+		g.setColor(Color.WHITE);	
 	
 	    g.setFont(new Font("Georgia", Font.BOLD, 20));
 		    
@@ -315,7 +318,6 @@ public class TableroTetris extends JPanel implements KeyListener, MouseListener,
 	public void addScore() {
 		score++; 
 	}
-	
 	
 	public void PuntuacionMax(Connection con, Usuario  u) throws SQLException {
 		if (score > u.getPuntuacionMax() ) {
