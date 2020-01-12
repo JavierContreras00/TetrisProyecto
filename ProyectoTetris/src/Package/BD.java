@@ -57,14 +57,32 @@ public class BD {
 
 */
 
-       public static Connection initBD() throws SQLException, ClassNotFoundException {
+    /*   public static Connection initBD() throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tetrix", "root", "deusto");
 		//Class.forName("org.sqlite.JDBC");
 		//Connection con = DriverManager.getConnection("jdbc:sqlite:C/sqlite/db/bdtetris.sql");
 		return con;
+	}*/
+	
+	public static Connection initBD(String bdtetris  ) {
+		try {
+			Class.forName("org.sqlite.JDBC");
+			Connection con= DriverManager.getConnection("jdbc:sqlite"+ bdtetris);
+			log(Level.INFO, "Conectada Base de datos" +bdtetris, null );
+			return null;
+		}catch(ClassNotFoundException | SQLException e) {
+			log(Level.SEVERE, "Error al conectar a la base de datos" + bdtetris, e);
+			return null;
+		}
+		
 	}
 	
+	private static void log(Level info, String string, Object object) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	/*public static Connection initBD() {
         Connection conn = null;
         try {
