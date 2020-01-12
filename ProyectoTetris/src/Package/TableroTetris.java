@@ -68,7 +68,6 @@ public class TableroTetris extends JPanel implements KeyListener, MouseListener,
 		refreshBounds = new Rectangle(350, 500 - refresh.getHeight() - 20,refresh.getWidth(),
 				refresh.getHeight() + refresh.getHeight()/2);
 		
-		
 		tiempo = new Timer(delay, new ActionListener() {
 
 			@Override

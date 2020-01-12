@@ -65,29 +65,29 @@ public class ventanaAyuda extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		scrollPane.setToolTipText("");
-		getContentPane().add(scrollPane);
+		scrollPane.getVerticalScrollBar().setValue(0);
+		getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
 	    JTextArea txtrTetriwarEsUn = new JTextArea();
-	    txtrTetriwarEsUn.setEditable(false);
+	    txtrTetriwarEsUn.setWrapStyleWord(true);
 	    scrollPane.setViewportView(txtrTetriwarEsUn);
 	    txtrTetriwarEsUn.setFont(new Font("Monospaced", Font.PLAIN, 13));
-	    txtrTetriwarEsUn.setWrapStyleWord(true);
 	    txtrTetriwarEsUn.setLineWrap(true);
-	    txtrTetriwarEsUn.setText("CURIOSIDADES: "
+	    txtrTetriwarEsUn.setText("CURIOSIDADES: \n"
 	    		+ "El tetris esta hecho por figuras geométricas compuestas por cuatro bloques cuadrados unidos de forma ortogonal, "
 	    		+ "las cuales se generan de una zona que ocupa 5x5 bloques en el área superior de la pantalla."
 	    		+ "El jugador no puede impedir esta caída, pero puede decidir la rotación de la pieza (0°, 90°, 180°, 270°) "
 	    		+ "y en qué lugar debe caer. Cuando una línea horizontal se completa, "
 	    		+ "esa línea desaparece y todas las piezas que están por encima descienden una posición, "
-	    		+ "liberando espacio de juego y por tanto facilitando la tarea de situar nuevas piezas. "  
-	    		+ "CONTROLES: "
-	    		+ "> Mueve Derecha"
-	    		+ "< Mueve Izquierda"
-	    		+ "^ Rota Pieza"
-	    		+ "v Aumenta velocidad de bajada"
-	    		+ "PUNTUACIONES: "
-	    		+ "Cada vez que una pieza se posada el contador sumara +1 y cuando una fila sea despejada se le sumara +1"
-	    		+ "NIVELES: "
+	    		+ "liberando espacio de juego y por tanto facilitando la tarea de situar nuevas piezas. \n "  
+	    		+ "CONTROLES: \n "
+	    		+ "> Mueve Derecha \n"
+	    		+ "< Mueve Izquierda \n"
+	    		+ "^ Rota Pieza \n"
+	    		+ "v Aumenta velocidad de bajada \n"
+	    		+ "PUNTUACIONES: \n "
+	    		+ "Cada vez que una pieza se posada el contador sumara +1 y cuando una fila sea despejada se le sumara +1 \n"
+	    		+ "NIVELES: \n "
 	    		+ "En este juego no hay niveles por lo que la dificultad y velocidad del juego seran constantes");
 	    
 	    JButton btnVolver = new JButton("Exit");
