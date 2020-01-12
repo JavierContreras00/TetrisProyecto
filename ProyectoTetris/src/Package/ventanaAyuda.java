@@ -14,6 +14,7 @@ import java.awt.Dimension;
 
 import javax.swing.JScrollBar;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.DropMode;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -51,6 +52,7 @@ public class ventanaAyuda extends JFrame {
 	 */
 	
 	public ventanaAyuda(Connection con, Usuario u) {
+		setResizable(false);
 		setBackground(Color.WHITE);
 		getContentPane().setBackground(Color.WHITE);
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
@@ -58,12 +60,11 @@ public class ventanaAyuda extends JFrame {
 		setTitle("Ayuda");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 300, 326, 284);
-		getContentPane().setLayout(null);
+		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		scrollPane.setToolTipText("");
-		scrollPane.setBounds(0, 0, 312, 214);
 		getContentPane().add(scrollPane);
 		
 	    JTextArea txtrTetriwarEsUn = new JTextArea();
@@ -80,15 +81,19 @@ public class ventanaAyuda extends JFrame {
 	    		+ "liberando espacio de juego y por tanto facilitando la tarea de situar nuevas piezas.");
 	    
 	    JButton btnVolver = new JButton("Exit");
-	    btnVolver.setBounds(111, 219, 85, 21);
-	    getContentPane().add(btnVolver);
+	    getContentPane().add(btnVolver, BorderLayout.SOUTH);
 	    btnVolver.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				int decision = JOptionPane.showConfirmDialog(null, "Estas seguro que quieres volver al Menu Principal");
+				if (decision == JOptionPane.YES_OPTION) {
 				ventanaPrincipal p = new ventanaPrincipal(con, u); 
 				p.setVisible(true);
 				ventanaAyuda.this.dispose();
+				} else {
+					decision = (Integer) null; 
+				}
 			}
 	    	
 	    });
