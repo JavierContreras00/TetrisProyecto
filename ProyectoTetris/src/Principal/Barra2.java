@@ -4,8 +4,6 @@ import java.awt.event.*;
 import javax.swing.*; 
 
 public class Barra2 extends JFrame {
-	
-	
 
 
 	JProgressBar current;

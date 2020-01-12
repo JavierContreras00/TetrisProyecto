@@ -57,7 +57,7 @@ public class ventanaAyuda extends JFrame {
 		setAlwaysOnTop(true);
 		setTitle("Ayuda");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 326, 284);
+		setBounds(300, 300, 326, 284);
 		getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -72,9 +72,14 @@ public class ventanaAyuda extends JFrame {
 	    txtrTetriwarEsUn.setFont(new Font("Monospaced", Font.PLAIN, 13));
 	    txtrTetriwarEsUn.setWrapStyleWord(true);
 	    txtrTetriwarEsUn.setLineWrap(true);
-	    txtrTetriwarEsUn.setText("TetriWar es un juego basado en el tetris de 1 a 4 personas. El jugador dispone del tablero principal para jugar y podr\u00E1 ver el juego de sus oponentes en los tableros auxiliares.\r\n\r\nEl juego consta de 7 piezas de forma geom\u00E9trica (con forma de I, O, J, L, S, Z y T) formadas por 4 bloques conectados. Una pieza aleatoria cae cada vez por la parte superior. El jugador deber\u00E1 controlarla y hacer que encaje con las que ya tiene en el tablero. Cuando consigue una l\u00EDnea horizontal y contigua de bloques, \u00E9sta se da como completa y desaparece.\r\n\r\nEl objetivo del juego es ganar m\u00E1s puntos que tus adversarios en el tiempo establecido. Los puntos se consiguen colocando piezas y eliminando l\u00EDneas. A mayor nivel de dificultad, mayor puntuaci\u00F3n (el nivel m\u00E1s alto es el 10).");
+	    txtrTetriwarEsUn.setText("Figuras geométricas compuestas por cuatro bloques cuadrados unidos de forma ortogonal, "
+	    		+ "las cuales se generan de una zona que ocupa 5x5 bloques en el área superior de la pantalla."
+	    		+ "El jugador no puede impedir esta caída, pero puede decidir la rotación de la pieza (0°, 90°, 180°, 270°) "
+	    		+ "y en qué lugar debe caer. Cuando una línea horizontal se completa, "
+	    		+ "esa línea desaparece y todas las piezas que están por encima descienden una posición, "
+	    		+ "liberando espacio de juego y por tanto facilitando la tarea de situar nuevas piezas.");
 	    
-	    JButton btnVolver = new JButton("Volver");
+	    JButton btnVolver = new JButton("Exit");
 	    btnVolver.setBounds(111, 219, 85, 21);
 	    getContentPane().add(btnVolver);
 	    btnVolver.addActionListener(new ActionListener() {
