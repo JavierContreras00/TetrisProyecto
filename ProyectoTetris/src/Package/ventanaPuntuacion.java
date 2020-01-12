@@ -43,5 +43,6 @@ public class ventanaPuntuacion extends JFrame {
 		JLabel lblPuntuacion = new JLabel("Puntuacion: " + u.getPuntuacionMax());
 		contentPane.add(lblPuntuacion);
 	}
+	
 
 }

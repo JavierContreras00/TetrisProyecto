@@ -9,7 +9,7 @@ import java.util.Vector;
 import java.util.logging.Level;
 
 public class BD {
-	/*private static Thread hilo = null;
+	private static Thread hilo = null;
 	private static Vector<Runnable> tareasPendientes;  
 	static {
 		tareasPendientes = new Vector<>();
@@ -33,39 +33,8 @@ public class BD {
 	}
 	private static Exception lastError = null;  // Información de último error SQL ocurrido
 	
-	public static Connection initBD( String bdtetris ) {
-		if (hilo == null) initHilo();
-		try {
-		    Class.forName("org.sqlite.JDBC");
-		    Connection con = DriverManager.getConnection("jdbc:sqlite:" + bdtetris );
-			log( Level.INFO, "Conectada base de datos " + bdtetris, null );
-		    return con;
-		} catch (ClassNotFoundException | SQLException e) {
-			lastError = e;
-			log( Level.SEVERE, "Error en conexión de base de datos " + bdtetris, e );
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
-	
-
-	private static void log(Level info, String string, Object object) {
-		// TODO Auto-generated method stub
-		
-	}
-
-*/
-
-    /*   public static Connection initBD() throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tetrix", "root", "deusto");
-		//Class.forName("org.sqlite.JDBC");
-		//Connection con = DriverManager.getConnection("jdbc:sqlite:C/sqlite/db/bdtetris.sql");
-		return con;
-	}*/
-	
 	public static Connection initBD(String bdtetris  ) {
+		if (hilo == null) initHilo();
 		try {
 			Class.forName("org.sqlite.JDBC");
 			Connection con= DriverManager.getConnection("jdbc:sqlite"+ bdtetris);
@@ -83,29 +52,7 @@ public class BD {
 		
 	}
 
-	/*public static Connection initBD() {
-        Connection conn = null;
-        try {
-            String url = "jdbc:sqlite:C:/sqlite/db/bdtetris.db";
-            conn = DriverManager.getConnection(url);
-            
-            System.out.println("Se ha establecido conexion con la base de datos.");
-            
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
-		return conn;
-    }
 	
-*/
 	public static Usuario crearUsuario(Connection con, String nombreUsuario) throws SQLException {
 		PreparedStatement pst = con.prepareStatement("select * from usuario where nombreUSuario=?");
 		pst.setString(1, nombreUsuario);

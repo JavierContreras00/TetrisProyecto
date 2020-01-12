@@ -30,11 +30,11 @@ public class VentanaLogIn extends JFrame {
 	private JPanel contentPane;
 	private JTextField tfUsuario;
 	private JTextField tfContrasenia;
-	private Connection con = BD.initBD();
-	/**
+	private Connection con = BD.initBD("bdtetris");
+	/**Connection con, Usuario u
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

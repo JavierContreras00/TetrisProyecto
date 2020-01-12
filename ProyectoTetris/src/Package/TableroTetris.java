@@ -10,6 +10,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Connection;
+
 import javax.swing.Timer;
 
 
@@ -235,5 +237,17 @@ public class TableroTetris extends JPanel implements KeyListener {
 	
 	public void addScore() {
 		score++; 
+	}
+	public int Puntos() {
+		score = score;
+		
+		return score;
+	}
+	
+	public void PuntuacionMax(Connection con, Usuario  u) {
+		if (score > u.getPuntos() ) {
+			u.getPuntos(score);
+			BD.actualizarDatosUsuario(con, u);		
+		}
 	}
 }

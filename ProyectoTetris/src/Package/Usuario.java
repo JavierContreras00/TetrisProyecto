@@ -93,5 +93,10 @@ public class Usuario {
 				+ nombre + ", apellido=" + apellido + ", fechaNac=" + fechaNac + ", contrasenia=" + contrasenia + "]";
 	}
 
+	public int getPuntos() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 }
