@@ -369,6 +369,6 @@ public class TableroTetris extends JPanel implements KeyListener, MouseListener,
 	public void mouseMoved(MouseEvent e) {
 		mouseX = e.getX();
 		mouseY = e.getY();
-		
+		//tgr
 	}
 }

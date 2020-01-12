@@ -151,7 +151,7 @@ public class VentanaLogIn extends JFrame {
 		contentPane.add(btnJuegaSinRegistrarte);
 
 		this.addWindowListener(new WindowAdapter() {
-
+//69
 			@Override
 			public void windowClosing(WindowEvent e) {
 				try {

@@ -88,7 +88,7 @@ public class ventanaAyuda extends JFrame {
 	    	
 	    });
 		
-		
+		//
 		
 		
 	}
