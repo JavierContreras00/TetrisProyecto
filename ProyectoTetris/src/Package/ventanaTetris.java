@@ -33,16 +33,21 @@ public class ventanaTetris {
 	 
 	  ventanaTetris.add(tablero); 
 	  ventanaTetris.addKeyListener(tablero);
-	
+	  ventanaTetris.addKeyListener(tablero);
+	  ventanaTetris.addMouseMotionListener(tablero);
+	  ventanaTetris.addMouseListener(tablero);
 	  
 	  ventanaTetris.setVisible(true);
-	 
+	  
 	}
-
-
 	
-
-
+	  public void startTetris() {
+	    ventanaTetris.addMouseMotionListener(tablero);
+		ventanaTetris.addMouseListener(tablero);
+		ventanaTetris.add(tablero);
+		tablero.startGame();
+		ventanaTetris.revalidate();
+     }
 		
 }
 
