@@ -29,19 +29,15 @@ public class TableroTetris extends JPanel implements KeyListener, MouseListener,
 	
 	private final int bloquesTamanyo = 30; 
 	private final int tableroAncho = 10, tableroAlto = 20; 
-	
 	private int [][] tableroTetris = new int[tableroAlto][tableroAncho]; 
-	
 	private FormaTetris[] formas = new FormaTetris[7]; 
     private FormaTetris formaActual, nuevaForma; 
     private Rectangle stopBounds, refreshBounds; 
     private int mouseX, mouseY;
-    private boolean leftClick = false;
-    
+    private boolean leftClick = false; 
     private Timer tiempo; 
     private final int FPS = 60; 
-    private final int delay = 1000/FPS; 
-    
+    private final int delay = 1000/FPS;  
     private boolean stopGame = false;
     private boolean Final = false; 
     
@@ -64,8 +60,6 @@ public class TableroTetris extends JPanel implements KeyListener, MouseListener,
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
 		
 		mouseX = 0;
 		mouseY = 0;
@@ -158,7 +152,8 @@ public class TableroTetris extends JPanel implements KeyListener, MouseListener,
 		formaActual.descarga();
 	}
 	
-
+    // Pintar las siguientes piezas y componentes de la parte derecha de la pantalla
+	
 	public void paint (Graphics g) {
 		super.paint(g); 
 		
@@ -170,16 +165,15 @@ public class TableroTetris extends JPanel implements KeyListener, MouseListener,
 		    		g.drawImage(bloques.getSubimage((tableroTetris[fila][col]-1)*bloquesTamanyo, 0, bloquesTamanyo, bloquesTamanyo), col * bloquesTamanyo, fila * bloquesTamanyo, null); 
 		    	}
 		    }
-		}for(int row = 0; row < nuevaForma.getCor().length; row ++)
-		{
-			for(int col = 0; col < nuevaForma.getCor()[0].length; col ++)
-			{
-				if(nuevaForma.getCor()[row][col] != 0)
-				{
+		}   
+		for(int row = 0; row < nuevaForma.getCor().length; row ++){
+			for(int col = 0; col < nuevaForma.getCor()[0].length; col ++){
+				if(nuevaForma.getCor()[row][col] != 0)	{
 					g.drawImage(nuevaForma.getBloques(), col*30 + 320, row*30 + 50, null);	
 				}
 			}		
 		}
+		
 		formaActual.reproducir(g);
 		
 		if(stopBounds.contains(mouseX, mouseY))
@@ -233,7 +227,6 @@ public class TableroTetris extends JPanel implements KeyListener, MouseListener,
 			g.drawLine(j*bloquesTamanyo, 0 , j*bloquesTamanyo, tableroAlto*bloquesTamanyo);
 		}
 		
-		
 		formaActual.reproducir(g);
 	
 	}
@@ -242,25 +235,22 @@ public class TableroTetris extends JPanel implements KeyListener, MouseListener,
 	
 	public void setForma() {
 		
-         int index = (int)(Math.random()*formas.length); 
-		 nuevaForma = new FormaTetris(formas[index].getBloques(), formas[index].getCor(), this, formas[index].getColor()); 
+    int index = (int)(Math.random()*formas.length); 
+	nuevaForma = new FormaTetris(formas[index].getBloques(), formas[index].getCor(), this, formas[index].getColor()); 
 	}
 	
 	public void siguienteForma() {
 		
-		formaActual = nuevaForma; 
-		setForma(); 
+	formaActual = nuevaForma; 
+	setForma(); 
 		
-		for(int fila = 0; fila < formaActual.getCor().length; fila++)
-		    for(int col = 0; col < formaActual.getCor()[fila].length; col++)
-		    	if(formaActual.getCor()[fila][col] != 0) {
-		    		
-		    		if(tableroTetris[formaActual.getY() + fila][formaActual.getX() + col] != 0) {
-		    			
-		    			Final = true; 
-		    		}
+	for(int fila = 0; fila < formaActual.getCor().length; fila++)
+	    for(int col = 0; col < formaActual.getCor()[fila].length; col++)
+		    if(formaActual.getCor()[fila][col] != 0) {
+		    	if(tableroTetris[formaActual.getY() + fila][formaActual.getX() + col] != 0) {	
+		    		Final = true; 
 		    	}
-		
+		    }
 	}
 	
 	public int[][] getTablero() {
@@ -273,7 +263,6 @@ public class TableroTetris extends JPanel implements KeyListener, MouseListener,
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 	
@@ -371,6 +360,5 @@ public class TableroTetris extends JPanel implements KeyListener, MouseListener,
 	public void mouseMoved(MouseEvent e) {
 		mouseX = e.getX();
 		mouseY = e.getY();
-		//tgr
 	}
 }

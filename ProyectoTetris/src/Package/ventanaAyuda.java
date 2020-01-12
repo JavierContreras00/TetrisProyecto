@@ -73,12 +73,22 @@ public class ventanaAyuda extends JFrame {
 	    txtrTetriwarEsUn.setFont(new Font("Monospaced", Font.PLAIN, 13));
 	    txtrTetriwarEsUn.setWrapStyleWord(true);
 	    txtrTetriwarEsUn.setLineWrap(true);
-	    txtrTetriwarEsUn.setText("Figuras geométricas compuestas por cuatro bloques cuadrados unidos de forma ortogonal, "
+	    txtrTetriwarEsUn.setText("CURIOSIDADES: "
+	    		+ "El tetris esta hecho por figuras geométricas compuestas por cuatro bloques cuadrados unidos de forma ortogonal, "
 	    		+ "las cuales se generan de una zona que ocupa 5x5 bloques en el área superior de la pantalla."
 	    		+ "El jugador no puede impedir esta caída, pero puede decidir la rotación de la pieza (0°, 90°, 180°, 270°) "
 	    		+ "y en qué lugar debe caer. Cuando una línea horizontal se completa, "
 	    		+ "esa línea desaparece y todas las piezas que están por encima descienden una posición, "
-	    		+ "liberando espacio de juego y por tanto facilitando la tarea de situar nuevas piezas.");
+	    		+ "liberando espacio de juego y por tanto facilitando la tarea de situar nuevas piezas. "  
+	    		+ "CONTROLES: "
+	    		+ "> Mueve Derecha"
+	    		+ "< Mueve Izquierda"
+	    		+ "^ Rota Pieza"
+	    		+ "v Aumenta velocidad de bajada"
+	    		+ "PUNTUACIONES: "
+	    		+ "Cada vez que una pieza se posada el contador sumara +1 y cuando una fila sea despejada se le sumara +1"
+	    		+ "NIVELES: "
+	    		+ "En este juego no hay niveles por lo que la dificultad y velocidad del juego seran constantes");
 	    
 	    JButton btnVolver = new JButton("Exit");
 	    getContentPane().add(btnVolver, BorderLayout.SOUTH);

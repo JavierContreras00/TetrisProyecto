@@ -8,14 +8,10 @@ public class FormaTetris {
 	private BufferedImage bloques;
 	private int [][] cor; 
 	private TableroTetris tablero;
-	
 	public int deltaX = 0; 
 	private int x, y; 
-	
 	private int color; 
-	
 	private boolean colision = false, ejeX = false; 
-	
 	private int nVelocidad = 600, bVelocidad = 100, velocidadActual; 
 	private long tiempo, uTiempo; 
 	
