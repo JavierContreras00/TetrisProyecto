@@ -211,4 +211,12 @@ public class FormaTetris {
 		return color;
 	}
 	
+	public int getY() {
+		return y; 
+	}
+	
+	public int getX() {
+		return x; 
+	}
+	
 }
