@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.swing.Timer;
 
@@ -244,9 +245,9 @@ public class TableroTetris extends JPanel implements KeyListener {
 		return score;
 	}
 	
-	public void PuntuacionMax(Connection con, Usuario  u) {
-		if (score > u.getPuntos() ) {
-			u.getPuntos(score);
+	public void PuntuacionMax(Connection con, Usuario  u) throws SQLException {
+		if (score > u.getPuntuacionMax() ) {
+			u.setPuntuacionMax(score);
 			BD.actualizarDatosUsuario(con, u);		
 		}
 	}
