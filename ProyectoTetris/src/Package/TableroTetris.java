@@ -239,11 +239,7 @@ public class TableroTetris extends JPanel implements KeyListener {
 	public void addScore() {
 		score++; 
 	}
-	public int Puntos() {
-		score = score;
-		
-		return score;
-	}
+	
 	
 	public void PuntuacionMax(Connection con, Usuario  u) throws SQLException {
 		if (score > u.getPuntuacionMax() ) {
