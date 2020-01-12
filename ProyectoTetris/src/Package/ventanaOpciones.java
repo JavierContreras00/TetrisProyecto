@@ -151,3 +151,5 @@ public class ventanaOpciones extends JFrame {
 		panel.setLayout(null);
 	}
 }
+//i
+//rw
